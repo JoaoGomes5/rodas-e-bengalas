@@ -4,7 +4,7 @@
   - Technician
   - Client 
 
-### Requesitos funcionais
+### Requisitos funcionais
 
   - **Admin** 
     - As an **admin** i can **create new home** 
