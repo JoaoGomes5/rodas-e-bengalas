@@ -31,7 +31,7 @@
   - **Client**
     - As an **client** i can see **my medications plan**
   
-### Requesitos não funcionais
+### Requisitos não funcionais
   - Use Javascript
   - Use HTML
   - Use CSS
