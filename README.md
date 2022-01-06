@@ -4,7 +4,7 @@
   - Technician
   - Client 
 
-### Requesitos funcionais
+### Requisitos funcionais
 
   - **Admin** 
     - As an **admin** i can **create new home** 
@@ -31,7 +31,7 @@
   - **Client**
     - As an **client** i can see **my medications plan**
   
-### Requesitos não funcionais
+### Requisitos não funcionais
   - Use Javascript
   - Use HTML
   - Use CSS
