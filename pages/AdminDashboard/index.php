@@ -76,6 +76,53 @@
                   </div>
               </a>
             </li>
+
+            <li class="home">
+              <a href="../HomeDetails?id=0">
+                  <div class="home-info">
+                      <h1>Lar de Espinho</h1>
+
+                      <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                      </p>
+                  </div>
+                  <div>
+
+                    <img src="../../assets/images/sea.png" alt="">
+                  </div>
+              </a>
+            </li>
+
+            <li class="home">
+              <a href="../HomeDetails?id=0">
+                  <div class="home-info">
+                      <h1>Lar de Espinho</h1>
+
+                      <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                      </p>
+                  </div>
+                  <div>
+
+                    <img src="../../assets/images/sea.png" alt="">
+                  </div>
+              </a>
+            </li>
+
+            <li class="home">
+              <a href="../HomeDetails?id=0">
+                  <div class="home-info">
+                      <h1>Lar de Espinho</h1>
+
+                      <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                      </p>
+                  </div>
+                  <div>
+
+                    <img src="../../assets/images/sea.png" alt="">
+                  </div>
+              </a>
             
 
           </ul>
