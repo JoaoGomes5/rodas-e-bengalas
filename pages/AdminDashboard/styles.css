@@ -1,0 +1,114 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a {
+  font-family: "Nunito", sans-serif;
+}
+
+body {
+  background-color: #f5f8fa;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.header {
+  margin: 0 40px 0 40px;
+}
+
+.header a {
+  background: rgba(249, 7, 22, 0.7);
+}
+
+.header a:hover {
+  background: rgba(249, 7, 22, 1);
+}
+
+.header-container {
+  background-color: #fff;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.6);
+}
+
+.content {
+  margin-top: 200px;
+  margin-bottom: 50px;
+}
+
+.title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  margin: 40px 40px 0 40px;
+}
+
+.title h1 {
+  font-size: 40px;
+  color: #123952;
+  font-weight: 600;
+}
+
+.title .new {
+  background: #dde9f0;
+}
+
+.title .new:hover {
+  background: rgba(249, 7, 22, 1);
+}
+
+.home a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 60%;
+  margin: 40px 40px 0 40px;
+
+  border: 0.79px solid #d3d3d3;
+  border-radius: 10px;
+
+  background: #fff;
+}
+
+.home a:hover {
+  background: rgba(255, 255, 255, 0.5);
+
+  box-shadow: 0 0 10px #d3d3d3;
+}
+
+.home a .home-info {
+  max-width: 300px;
+  margin-left: 50px;
+}
+
+.home a .home-info h1 {
+  font-size: 28px;
+  color: #123952;
+  font-weight: 500;
+}
+
+.home a .home-info p {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.home a img {
+  border-radius: 0px 10px 10px 0;
+}
+
+.home-list {
+  overflow-y: scroll;
+  max-height: 100vh;
+  max-width: 90vw;
+}
