@@ -1,16 +1,20 @@
 <?php
 
 function get_connection(){
-    $server = "localhost"; //serverName\instanceName
-    $mysql_user = "root";
-    $mysql_password = "";
-    $database = "rodasbengalas";
+     $password = "";
+     $Jpassword = "mysql";
+     $server = "localhost"; //serverName\instanceName
+     $mysql_user = "root";
+     $mysql_password = $Jpassword;
+     $database = "rodasbengalas";
 
     $conn = mysqli_connect($server, $mysql_user, $mysql_password, $database);
     
     if($conn) {
+         echo "Connected";
          return $conn;
     }else {
+         echo "Error";
          return null;
     }
 }

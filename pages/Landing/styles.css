@@ -1,0 +1,75 @@
+p, h1, h2, h3, h4, h5, h6, a {
+  font-family: 'Nunito', sans-serif;
+}
+body {
+  background-color: #fff;
+}
+.icon{
+  height: 30%;
+  width: 30%;
+}
+
+.header {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+
+  margin-left: 150px;
+  margin-right: 100px;
+  margin-top: 50px;
+}
+
+.header p {
+  font-size: 20px;
+  font-weight: bold;
+  color: #322153;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-left: 200px;
+  margin-right: 250px;
+  margin-top: 100px;
+}
+main .container  h1 {
+  color: #322153;
+  font-size: 64px;
+}
+
+main img {
+  width: 50%;
+  height: 50%;
+}
+
+main .container a {
+    text-decoration: none;
+    width: 360px;
+    height: 72px;
+    background: #F9A826;
+    border-radius: 8px;
+
+    font-weight: bold;
+    font-size: 20px;
+
+    color: #fff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+
+    transition: background-color 0.2s;
+    cursor: pointer;
+}
+main .container button a:hover {
+  background: #96feff;
+
+}
+
+
