@@ -111,4 +111,5 @@ body::-webkit-scrollbar {
   overflow-y: scroll;
   max-height: 100vh;
   max-width: 90vw;
+  margin-top: 20px;
 }

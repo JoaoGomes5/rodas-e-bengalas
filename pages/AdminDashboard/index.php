@@ -26,7 +26,7 @@
       <div class="flex justify-between items-center py-6 md:justify-start md:space-x-10">
           <div class="flex justify-start lg:w-0 lg:flex-1">
             <a href="#">
-              <span class="sr-only">Workflow</span>
+              <span class="sr-only">Rodas e Bengalas</span>
               <img class="h-20" src="../../assets/images/icon.png" alt="">
             </a>
           </div>
@@ -62,7 +62,7 @@
 
           <ul >
             <li class="home">
-              <a href="">
+              <a href="../HomeDetails?id=0">
                   <div class="home-info">
                       <h1>Lar de Espinho</h1>
 
