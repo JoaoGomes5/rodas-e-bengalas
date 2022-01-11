@@ -1,5 +1,5 @@
 <?php
-    require_once($_SERVER['DOCUMENT_ROOT'] . "/DSOS/rodas-e-bengalas/src/database/connection.php");
+    require_once($_SERVER['DOCUMENT_ROOT'] . "/rodas-e-bengalas/src/database/connection.php");
 
     function create_user(int $type, string $firstName, string $lastName, int $idHome) {
         $conn = get_connection();
