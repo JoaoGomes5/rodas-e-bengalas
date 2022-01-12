@@ -187,6 +187,32 @@ class User {
         }
     }
 
+    public static function get_users_by_home_type(int $idHome, int $type){
+        $conn = get_connection();
+
+        $sql = "SELECT * FROM users WHERE idHome = $idHome AND type = $type";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            $users_array[] = new User();
+
+            while($row = $result->fetch_assoc()) {
+                $user = new User();
+                $user = $user->row_to_object($row);
+                
+                array_push($users_array, $user);
+            }
+
+            array_shift($users_array);
+            $conn->close();
+            return $users_array;
+        } else {
+            echo "0 results";
+            $conn->close();
+            return null;
+        }
+    }
+
     public function to_string(){
         $idUser = $this->get_id_user();
         $type = $this->get_type();
