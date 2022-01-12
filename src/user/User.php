@@ -69,7 +69,7 @@ class User {
             $conn->close();
 
             $user = new User();
-            $user = $user->save_data($row);
+            $user = $user->row_to_object($row);
 
             return $user;
         } else {
@@ -113,7 +113,7 @@ class User {
             $row = $result->fetch_assoc();
             $conn->close();
 
-            $user = $this->save_data($row);
+            $user = $this->row_to_object($row);
 
             return $user;
         } else {
@@ -123,7 +123,7 @@ class User {
         }
     }
 
-    private function save_data($user_row) {
+    private function row_to_object($user_row) {
         $user = new User();
 
         $user->set_id_user($user_row["idUser"]);
@@ -133,6 +133,68 @@ class User {
         $user->set_id_home($user_row["idHome"]);
 
         return $user;
+    }
+
+    public static function get_users_by_type(int $type){
+        $conn = get_connection();
+
+        $sql = "SELECT * FROM users WHERE type = $type";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            $users_array[] = new User();
+
+            while($row = $result->fetch_assoc()) {
+                $user = new User();
+                $user = $user->row_to_object($row);
+                
+                array_push($users_array, $user);
+            }
+
+            array_shift($users_array);
+            $conn->close();
+            return $users_array;
+        } else {
+            echo "0 results";
+            $conn->close();
+            return null;
+        }
+    }
+
+    public static function get_users_by_home(int $idHome){
+        $conn = get_connection();
+
+        $sql = "SELECT * FROM users WHERE idHome = $idHome";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            $users_array[] = new User();
+
+            while($row = $result->fetch_assoc()) {
+                $user = new User();
+                $user = $user->row_to_object($row);
+                
+                array_push($users_array, $user);
+            }
+
+            array_shift($users_array);
+            $conn->close();
+            return $users_array;
+        } else {
+            echo "0 results";
+            $conn->close();
+            return null;
+        }
+    }
+
+    public function to_string(){
+        $idUser = $this->get_id_user();
+        $type = $this->get_type();
+        $firstName = $this->get_first_name();
+        $lastName = $this->get_last_name();
+        $idHome = $this->get_id_home();
+
+        return "idUser = '$idUser', type = '$type', firstName = '$firstName', lastName = '$lastName', idHome = '$idHome'";
     }
 }
 
