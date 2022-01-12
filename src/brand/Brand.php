@@ -2,16 +2,16 @@
 require_once(dirname(__FILE__, 3) . "/src/database/connection.php");
 
 class Brand {
-    private $idBrand;
+    private $id;
     private $name;
     private $description;
 
-    public function set_id_brand($idBrand) {
-        $this->idBrand = $idBrand;
+    public function set_id($id) {
+        $this->id = $id;
     }
 
-    public function get_id_brand() {
-        return $this->idBrand;
+    public function get_id() {
+        return $this->id;
     }
 
     public function set_name($name) {
@@ -31,11 +31,11 @@ class Brand {
     }
 
     public function to_string(){
-        $idBrand = $this->get_id_brand();
+        $id = $this->get_id();
         $name = $this->get_name();
         $description = $this->get_description();
 
-        return "[ idBrand = '$idBrand', name = '$name', description = '$description' ]";
+        return "[ id = '$id', name = '$name', description = '$description' ]";
     }
 }
 

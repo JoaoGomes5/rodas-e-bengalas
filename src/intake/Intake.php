@@ -2,15 +2,15 @@
 require_once(dirname(__FILE__, 3) . "/src/database/connection.php");
 
 class Intake {
-    private $idIntake;
+    private $id;
     private $description;
 
-    public function set_id_intake($idIntake) {
-        $this->idIntake = $idIntake;
+    public function set_id($id) {
+        $this->id = $id;
     }
 
-    public function get_id_intake() {
-        return $this->idIntake;
+    public function get_id() {
+        return $this->id;
     }
 
     public function set_description($description) {
@@ -22,10 +22,10 @@ class Intake {
     }
 
     public function to_string(){
-        $idIntake = $this->get_id_intake();
+        $id = $this->get_id();
         $description = $this->get_description();
 
-        return "[ idIntake = '$idIntake', description = '$description' ]";
+        return "[ id = '$id', description = '$description' ]";
     }
 }
 

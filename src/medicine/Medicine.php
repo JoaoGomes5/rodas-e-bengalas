@@ -4,18 +4,18 @@ require_once(dirname(__FILE__, 3) . "/src/brand/Brand.php");
 require_once(dirname(__FILE__, 3) . "/src/intake/Intake.php");
 
 class Medicine {
-    private $idMedicine;
+    private $id;
     private $quantity;
     private $activeIngredient;
     private Brand $brand;
     private Intake $intake;
 
-    public function set_id_medicine($idMedicine) {
-        $this->idMedicine = $idMedicine;
+    public function set_id($id) {
+        $this->id = $id;
     }
 
-    public function get_id_medicine() {
-        return $this->idMedicine;
+    public function get_id() {
+        return $this->id;
     }
 
     public function set_quantity($quantity) {
@@ -51,13 +51,13 @@ class Medicine {
     }
 
     public function to_string(){
-        $idMedicine = $this->get_id_medicine();
+        $id = $this->get_id();
         $quantity = $this->get_quantity();
         $activeIngredient = $this->get_active_ingredient();
         $brand = $this->get_brand();
         $intake = $this->get_intake();
 
-        return "[ idMedicine = '$idMedicine', quantity = '$quantity', activeIngredient = '$activeIngredient', brand = '$brand->to_string()', intake = '$intake->to_string()' ]";
+        return "[ id = '$id', quantity = '$quantity', activeIngredient = '$activeIngredient', brand = '$brand->to_string()', intake = '$intake->to_string()' ]";
     }
 }
 

@@ -8,18 +8,18 @@ Forma de acesso aos dados de um utilizador:
     ...
 */
 class User {
-    private $idUser;
+    private $id;
     private $type;
     private $firstName;
     private $lastName;
     private $idHome;
 
-    public function set_id_user($idUser) {
-        $this->idUser = $idUser;
+    public function set_id($id) {
+        $this->id = $id;
     }
 
-    public function get_id_user() {
-        return $this->idUser;
+    public function get_id() {
+        return $this->id;
     }
 
     public function set_type($type) {
@@ -61,7 +61,7 @@ class User {
     public static function get_client_by_id(int $client_id) {
         $conn = get_connection();
 
-        $sql = "SELECT * FROM users WHERE idUser = $client_id";
+        $sql = "SELECT * FROM users WHERE id = $client_id";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
@@ -106,7 +106,7 @@ class User {
     private function get_last_inserted_user(){
         $conn = get_connection();
 
-        $sql = "SELECT * FROM users ORDER BY idUser DESC LIMIT 1";
+        $sql = "SELECT * FROM users ORDER BY id DESC LIMIT 1";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
@@ -126,7 +126,7 @@ class User {
     private function row_to_object($user_row) {
         $user = new User();
 
-        $user->set_id_user($user_row["idUser"]);
+        $user->set_id($user_row["id"]);
         $user->set_type($user_row["type"]);
         $user->set_first_name($user_row["firstName"]);
         $user->set_last_name($user_row["lastName"]);
@@ -214,13 +214,13 @@ class User {
     }
 
     public function to_string(){
-        $idUser = $this->get_id_user();
+        $id = $this->get_id();
         $type = $this->get_type();
         $firstName = $this->get_first_name();
         $lastName = $this->get_last_name();
         $idHome = $this->get_id_home();
 
-        return "[ idUser = '$idUser', type = '$type', firstName = '$firstName', lastName = '$lastName', idHome = '$idHome' ]";
+        return "[ id = '$id', type = '$type', firstName = '$firstName', lastName = '$lastName', idHome = '$idHome' ]";
     }
 }
 
