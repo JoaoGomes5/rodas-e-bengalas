@@ -8,6 +8,8 @@ class Medication {
     private User $technician;
     private User $client;
     private MedicineMedication $medicineMedication;
+    private $startDate;
+    private $endDate;
 
     public function set_id($id) {
         $this->id = $id;
@@ -41,13 +43,31 @@ class Medication {
         return $this->medicineMedication;
     }
 
+    public function set_start_date($startDate) {
+        $this->startDate = $startDate;
+    }
+
+    public function get_start_date() {
+        return $this->startDate;
+    }
+
+    public function set_end_date($endDate) {
+        $this->endDate = $endDate;
+    }
+
+    public function get_end_date() {
+        return $this->endDate;
+    }
+
     public function to_string(){
         $id = $this->get_id();
         $technician = $this->get_technician();
         $client = $this->get_client();
         $medicineMedication = $this->get_medication_specification();
+        $startDate = $this->get_start_date();
+        $endDate = $this->get_end_date();
 
-        return "[ id = '$id', technician = '$technician->to_string()', client = '$client->to_string()', medicineMedication = '$medicineMedication->to_string()' ]";
+        return "[ id = '$id', technician = '$technician->to_string()', client = '$client->to_string()', medicineMedication = '$medicineMedication->to_string()', startDate = '$startDate', endDate = '$endDate' ]";
     }
 }
 
