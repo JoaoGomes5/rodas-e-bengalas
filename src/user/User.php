@@ -8,49 +8,49 @@ Forma de acesso aos dados de um utilizador:
     ...
 */
 class User {
-    public $idUser;
-    public $type;
-    public $firstName;
-    public $lastName;
-    public $idHome;
+    private $idUser;
+    private $type;
+    private $firstName;
+    private $lastName;
+    private $idHome;
 
-    function set_id_user($idUser) {
+    public function set_id_user($idUser) {
         $this->idUser = $idUser;
     }
 
-    function get_id_user() {
+    public function get_id_user() {
         return $this->idUser;
     }
 
-    function set_type($type) {
+    public function set_type($type) {
         $this->type = $type;
     }
 
-    function get_type() {
+    public function get_type() {
         return $this->type;
     }
 
-    function set_first_name($firstName) {
+    public function set_first_name($firstName) {
         $this->firstName = $firstName;
     }
 
-    function get_first_name() {
+    public function get_first_name() {
         return $this->firstName;
     }
 
-    function set_last_name($lastName) {
+    public function set_last_name($lastName) {
         $this->lastName = $lastName;
     }
 
-    function get_last_name() {
+    public function get_last_name() {
         return $this->lastName;
     }
 
-    function set_id_home($idHome) {
+    public function set_id_home($idHome) {
         $this->idHome = $idHome;
     }
 
-    function get_id_home() {
+    public function get_id_home() {
         return $this->idHome;
     }
 
@@ -58,7 +58,7 @@ class User {
     Devemos chamar a função da seguinte forma:
         $user = User::get_client_by_id(5);
     */
-    static function get_client_by_id(int $client_id) {
+    public static function get_client_by_id(int $client_id) {
         $conn = get_connection();
 
         $sql = "SELECT * FROM users WHERE idUser = $client_id";
@@ -83,7 +83,7 @@ class User {
     Devemos chamar a função da seguinte forma:
         $user = User::create_user(3, "João", "Brito", 0);
     */
-    static function create_user(int $type, string $firstName, string $lastName, int $idHome) {
+    public static function create_user(int $type, string $firstName, string $lastName, int $idHome) {
         $conn = get_connection();
 
         if ($idHome == 0) $sql = "INSERT INTO users (type, firstName, lastName) VALUES ('$type', '$firstName', '$lastName')";
@@ -220,7 +220,7 @@ class User {
         $lastName = $this->get_last_name();
         $idHome = $this->get_id_home();
 
-        return "idUser = '$idUser', type = '$type', firstName = '$firstName', lastName = '$lastName', idHome = '$idHome'";
+        return "[ idUser = '$idUser', type = '$type', firstName = '$firstName', lastName = '$lastName', idHome = '$idHome' ]";
     }
 }
 
