@@ -14,6 +14,10 @@ class User {
     private $lastName;
     private $idHome;
 
+    public function set_id($id) {
+        $this->id = $id;
+    }
+
     public function get_id() {
         return $this->id;
     }
@@ -121,7 +125,6 @@ class User {
 
             return $user;
         } else {
-            echo "0 results";
             $conn->close();
             return null;
         }
@@ -145,7 +148,6 @@ class User {
 
             return $user;
         } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
             $conn->close();
             return false;
         }
@@ -197,7 +199,6 @@ class User {
 
             return $user;
         } else {
-            echo "0 results";
             $conn->close();
             return null;
         }
@@ -235,7 +236,6 @@ class User {
             $conn->close();
             return $users_array;
         } else {
-            echo "0 results";
             $conn->close();
             return null;
         }
@@ -261,7 +261,6 @@ class User {
             $conn->close();
             return $users_array;
         } else {
-            echo "0 results";
             $conn->close();
             return null;
         }
@@ -287,7 +286,6 @@ class User {
             $conn->close();
             return $users_array;
         } else {
-            echo "0 results";
             $conn->close();
             return null;
         }
