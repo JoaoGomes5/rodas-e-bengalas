@@ -14,16 +14,25 @@ class User {
     private $lastName;
     private $idHome;
 
-    public function set_id($id) {
-        $this->id = $id;
-    }
-
     public function get_id() {
         return $this->id;
     }
 
     public function set_type($type) {
         $this->type = $type;
+        $id = $this->get_id();
+        $conn = get_connection();
+
+        $sql = "UPDATE users SET type = $type WHERE id = $id";
+
+        if ($conn->query($sql) === TRUE) {
+            $conn->close();
+            return true;
+        } else {
+            $conn->close();
+            return false;
+        }
+
     }
 
     public function get_type() {
@@ -32,6 +41,19 @@ class User {
 
     public function set_first_name($firstName) {
         $this->firstName = $firstName;
+        $id = $this->get_id();
+        $conn = get_connection();
+
+        $sql = "UPDATE users SET firstName = $firstName WHERE id = $id";
+
+        if ($conn->query($sql) === TRUE) {
+            $conn->close();
+            return true;
+        } else {
+            $conn->close();
+            return false;
+        }
+
     }
 
     public function get_first_name() {
@@ -40,6 +62,19 @@ class User {
 
     public function set_last_name($lastName) {
         $this->lastName = $lastName;
+        $id = $this->get_id();
+        $conn = get_connection();
+
+        $sql = "UPDATE users SET lastName = $lastName WHERE id = $id";
+
+        if ($conn->query($sql) === TRUE) {
+            $conn->close();
+            return true;
+        } else {
+            $conn->close();
+            return false;
+        }
+
     }
 
     public function get_last_name() {
@@ -48,6 +83,19 @@ class User {
 
     public function set_id_home($idHome) {
         $this->idHome = $idHome;
+        $id = $this->get_id();
+        $conn = get_connection();
+
+        $sql = "UPDATE users SET idHome = $idHome WHERE id = $id";
+
+        if ($conn->query($sql) === TRUE) {
+            $conn->close();
+            return true;
+        } else {
+            $conn->close();
+            return false;
+        }
+
     }
 
     public function get_id_home() {
@@ -131,6 +179,23 @@ class User {
             return false;
         }
     }
+
+    public function update_user(int $type, string $firstName, string $lastName, int $idHome) {
+        $id = $this->get_id();
+        $conn = get_connection();
+
+        $sql = "UPDATE users SET type = $type, firstName = $firstName, lastName = $lastName, idHome = $idHome WHERE id = $id";
+
+        if ($conn->query($sql) === TRUE) {
+            $conn->close();
+            return true;
+        } else {
+            $conn->close();
+            return false;
+        }
+    }
+
+
 
     private function get_last_inserted_user(){
         $conn = get_connection();
