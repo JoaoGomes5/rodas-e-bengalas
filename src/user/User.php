@@ -151,20 +151,6 @@ class User {
         }
     }
 
-    public static function delete_user_by_id(int $user_id)  {
-        $conn = get_connection();
-
-        $sql = "DELETE * FROM users WHERE id = $user_id";
-
-        if ($conn->query($sql) === TRUE) {
-            $conn->close();
-            return true;
-        } else {
-            $conn->close();
-            return false;
-        }
-    }
-
     public function delete_user()  {
         $conn = get_connection();
         $id = $this->get_id();
