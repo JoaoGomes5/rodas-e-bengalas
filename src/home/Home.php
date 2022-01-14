@@ -39,6 +39,18 @@ class Home {
 
     public function set_address($address) {
         $this->address = $address;
+        $id = $this->get_id();
+        $conn = get_connection();
+
+        $sql = "UPDATE homes SET address = $address WHERE id = $id";
+
+        if ($conn->query($sql) === TRUE) {
+            $conn->close();
+            return true;
+        } else {
+            $conn->close();
+            return false;
+        }
     }
 
     public function get_address() {
@@ -47,6 +59,18 @@ class Home {
 
     public function set_description($description) {
         $this->description = $description;
+        $id = $this->get_id();
+        $conn = get_connection();
+
+        $sql = "UPDATE homes SET description = $description WHERE id = $id";
+
+        if ($conn->query($sql) === TRUE) {
+            $conn->close();
+            return true;
+        } else {
+            $conn->close();
+            return false;
+        }
     }
 
     public function get_description() {
