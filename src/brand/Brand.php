@@ -54,7 +54,7 @@ class Brand {
         return $this->description;
     }
 
-    public function update_brand($name, $description) {
+    public function update($name, $description) {
         $id = $this->get_id();
         $conn = get_connection();
 
@@ -69,7 +69,7 @@ class Brand {
         }
     }
 
-    public static function create_brand($name, $description){
+    public static function create($name, $description){
         $conn = get_connection();
 
         $sql = "INSERT INTO brand (name, description) VALUES ('$name', '$description')";
@@ -78,7 +78,7 @@ class Brand {
             $conn->close();
 
             $brand = new Brand();
-            $brand = $brand->get_last_inserted_brand();
+            $brand = $brand->get_last_inserted();
 
             return $brand;
         } else {
@@ -87,7 +87,7 @@ class Brand {
         }
     }
 
-    public static function get_brand_by_id(int $brand_id) {
+    public static function get_by_id(int $brand_id) {
         $conn = get_connection();
 
         $sql = "SELECT * FROM brand WHERE id = $brand_id";
@@ -107,7 +107,7 @@ class Brand {
         }
     }
 
-    private function get_last_inserted_brand(){
+    private function get_last_inserted(){
         $conn = get_connection();
 
         $sql = "SELECT * FROM brand ORDER BY id DESC LIMIT 1";
@@ -126,7 +126,7 @@ class Brand {
         }
     }
 
-    public function delete_brand()  {
+    public function delete()  {
         $conn = get_connection();
         $id = $this->get_id();
 

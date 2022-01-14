@@ -132,9 +132,9 @@ class User {
 
     /*
     Devemos chamar a função da seguinte forma:
-        $user = User::create_user(3, "João", "Brito", 0);
+        $user = User::create(3, "João", "Brito", 0);
     */
-    public static function create_user(int $type, string $firstName, string $lastName, int $idHome) {
+    public static function create(int $type, string $firstName, string $lastName, int $idHome) {
         $conn = get_connection();
 
         if ($idHome == 0) $sql = "INSERT INTO users (type, firstName, lastName) VALUES ('$type', '$firstName', '$lastName')";
@@ -144,7 +144,7 @@ class User {
             $conn->close();
 
             $user = new User();
-            $user = $user->get_last_inserted_user();
+            $user = $user->get_last_inserted();
 
             return $user;
         } else {
@@ -153,7 +153,7 @@ class User {
         }
     }
 
-    public function delete_user()  {
+    public function delete()  {
         $conn = get_connection();
         $id = $this->get_id();
 
@@ -168,7 +168,7 @@ class User {
         }
     }
 
-    public function update_user(int $type, string $firstName, string $lastName, int $idHome) {
+    public function update(int $type, string $firstName, string $lastName, int $idHome) {
         $id = $this->get_id();
         $conn = get_connection();
 
@@ -185,7 +185,7 @@ class User {
 
 
 
-    private function get_last_inserted_user(){
+    private function get_last_inserted(){
         $conn = get_connection();
 
         $sql = "SELECT * FROM users ORDER BY id DESC LIMIT 1";
@@ -216,7 +216,7 @@ class User {
         return $user;
     }
 
-    public static function get_users_by_type(int $type){
+    public static function gets_by_type(int $type){
         $conn = get_connection();
 
         $sql = "SELECT * FROM users WHERE type = $type";
@@ -241,7 +241,7 @@ class User {
         }
     }
 
-    public static function get_users_by_home(int $idHome){
+    public static function gets_by_home(int $idHome){
         $conn = get_connection();
 
         $sql = "SELECT * FROM users WHERE idHome = $idHome";
@@ -266,7 +266,7 @@ class User {
         }
     }
 
-    public static function get_users_by_home_type(int $idHome, int $type){
+    public static function gets_by_home_type(int $idHome, int $type){
         $conn = get_connection();
 
         $sql = "SELECT * FROM users WHERE idHome = $idHome AND type = $type";
