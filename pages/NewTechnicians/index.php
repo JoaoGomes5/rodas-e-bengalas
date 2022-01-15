@@ -27,7 +27,7 @@
 <div class="header-container fixed w-full z-10 top-0">
     <header class="header">
       <div class="flex justify-between items-center py-6 md:justify-start md:space-x-10">
-      <a href="../ManageUsers" class="bg-gray-400 hover:bg-gray-500 py-3    px-3 rounded inline-flex items-center ">
+      <a href="../ManageTechnicians" class="bg-gray-400 hover:bg-gray-500 py-3    px-3 rounded inline-flex items-center ">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="#FFF">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                         </svg>
@@ -61,7 +61,7 @@
   
     <form class="create-orphanage-form" method="POST">
           <fieldset>
-            <legend>Registar novo utente</legend>
+            <legend>Registar novo técnico</legend>
             <div class="input-block">
               <label for="first-name">Primeiro nome</label>
                 <input 

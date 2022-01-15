@@ -76,7 +76,7 @@
           </div>
 
           <div class="option">
-            <a href="../ClientLogin">
+            <a href="../ManageTechnicians">
               <img src="../../assets/images/doctor.png" alt="">
 
               <p>Técnicos</p>
