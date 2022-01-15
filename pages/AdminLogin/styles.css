@@ -1,15 +1,22 @@
- *{
-   margin: 0;
-   padding: 0;
- }
-
- p, h1, h2, h3, h4, h5, h6, a {
-  font-family: 'Nunito', sans-serif;
+* {
+  margin: 0;
+  padding: 0;
 }
 
- body {
-   background-color: #F5F8FA;
- }
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a {
+  font-family: "Nunito", sans-serif;
+}
+
+body {
+  background-color: #f5f8fa;
+}
 .container {
   height: 100vh;
   display: flex;
@@ -33,7 +40,7 @@
 }
 
 input {
-  background: #FFF;
+  background: #fff;
   border-radius: 10px;
   padding: 16px;
 
@@ -46,26 +53,22 @@ input {
   font-size: 20px;
 
   border: 1px solid #ccc;
-
 }
 
 input:focus {
   outline: none !important;
-  border:1px solid #123952;
-  box-shadow: 0 0 10px #719ECE;
+  border: 1px solid #123952;
+  box-shadow: 0 0 10px #719ece;
 }
 
 .background-container {
   flex: 1;
-  background: linear-gradient(
-    rgba(2, 110, 242, 0.21), 
-    rgba(2, 110, 242, 0.21)
-  ),
-  url("../../assets/images/admin-login.png") no-repeat center;
+  background: linear-gradient(rgba(2, 110, 242, 0.21), rgba(2, 110, 242, 0.21)),
+    url("../../assets/images/admin-login.png") no-repeat center;
   background-size: cover;
 }
 
-.form-container h1{
+.form-container h1 {
   font-size: 40px;
   color: #123952;
   font-weight: 600;
@@ -75,16 +78,14 @@ input:focus {
   margin-top: 20px;
 }
 
-
- button {
-
+button {
   background: rgba(2, 110, 242, 0.5);
   border-radius: 10px;
   padding: 16px;
 
   width: 360px;
   height: 72px;
-  color: #FFF;
+  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -100,7 +101,7 @@ input:focus {
   cursor: pointer;
 
   font-weight: bold;
-   transition: background-color 0.2s ;
+  transition: background-color 0.2s;
 }
 
 button:hover {
@@ -116,36 +117,31 @@ a {
   right: 0;
   top: 0;
 
-  transition: background-color 0.5s ;
+  transition: background-color 0.5s;
 
- 
-    text-decoration: none;
-   
-  
-    border-radius: 8px;
+  text-decoration: none;
 
-    font-weight: bold;
-    font-size: 20px;
+  border-radius: 8px;
 
-    color: #fff;
+  font-weight: bold;
+  font-size: 20px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  color: #fff;
 
-    border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    cursor: pointer;
+  border: none;
 
-    margin: 20px;
-    margin-left: 100px;
-    margin-top: 40px;
-    margin-right: 600px;
+  cursor: pointer;
 
+  margin: 20px;
+  margin-left: 100px;
+  margin-top: 40px;
+  margin-right: 600px;
 }
 
 a:hover {
   background: rgba(249, 7, 22, 0.7);
 }
-
-

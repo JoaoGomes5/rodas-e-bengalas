@@ -40,7 +40,7 @@
 
             </a>
 
-            <a href="#" class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-10 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white ">
+            <a href="../../src/session/logout.php" class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-10 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white ">
               Sair
             </a>
           </div>
@@ -53,7 +53,7 @@
             <h1>Lista de lares</h1>
 
             <div class="buttons-container">
-              <a href="#" class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-10 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-blue-400 hover:bg-blue-500">
+              <a href="../NewHome" class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-10 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-blue-400 hover:bg-blue-500">
                 Criar novo
               </a>
             </div>

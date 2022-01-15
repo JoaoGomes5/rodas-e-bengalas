@@ -53,7 +53,6 @@ CREATE TABLE `districts` (
 --
 
 CREATE TABLE `homes` (
-<<<<<<< HEAD
   `id` int NOT NULL,
   `idDistrict` int NOT NULL,
   `address` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
@@ -127,17 +126,13 @@ CREATE TABLE `medicinemedication` (
 --
 
 CREATE TABLE `users` (
-<<<<<<< HEAD
   `id` int NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `type` int NOT NULL COMMENT '0: Admin\r\n1: Home admin\r\n2: Technician\r\n3: Client',
-=======
-  `id` int(11) NOT NULL,
-  `type` int(11) NOT NULL COMMENT '0: Admin\r\n1: Home admin\r\n2: Technician\r\n3: Client',
->>>>>>> 619f695426d4fe89de55ddcf20cfebda8685fdad
   `firstName` varchar(255) NOT NULL,
   `lastName` varchar(255) NOT NULL,
+  `photo` varchar(255) NOT NULL,
   `idHome` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
