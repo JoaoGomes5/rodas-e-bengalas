@@ -18,7 +18,7 @@
   <script type="text/javascript" src="./index.js"></script>
 
 
-  <title>Admin | Dashboard</title>
+  <title>Administrador de lar | Editar Utente</title>
   
 </head>
 <body>
@@ -61,9 +61,9 @@
   
     <form class="create-orphanage-form" method="POST">
           <fieldset>
-            <legend>Criar novo lar</legend>
+            <legend>Editar utente</legend>
             <div class="input-block">
-              <label for="name">Nome</label>
+              <label htmlFor="name">Nome</label>
                 <input 
                   required
                   id="name" 

@@ -61,23 +61,46 @@
   
     <form class="create-orphanage-form" method="POST">
           <fieldset>
-            <legend>Criar novo lar</legend>
+            <legend>Registar novo utente</legend>
             <div class="input-block">
-              <label for="name">Nome</label>
+              <label for="first-name">Primeiro nome</label>
                 <input 
                   required
-                  id="name" 
-                  name="name"
+                  id="first-name" 
+                  name="first-name"
                 />
             </div>
 
             <div class="input-block">
-              <label for="address">Morada</label>
-                <textarea 
+              <label for="last-name">Ultimo nome</label>
+                <input 
                   required
-                  id="address" 
-                  name="address"
-                  maxLength={300} ></textarea>
+                  id="last-name" 
+                  name="last-name"
+                  autocomplete="off"
+                />
+            </div>
+
+            <div class="input-block">
+              <label for="email">E-Mail</label>
+              <input 
+                  type="email"
+                  required
+                  id="email" 
+                  name="email"
+                  autocomplete="off"
+                />
+            </div>
+
+            <div class="input-block">
+              <label for="password">Password</label>
+                <input 
+                  type="password"
+                  required
+                  id="password" 
+                  name="password"
+                  autocomplete="off"
+                />
             </div>
 
             <div class="input-block">
@@ -86,17 +109,8 @@
                   required
                   id="url" 
                   name="url"
+                  autocomplete="off"
                 />
-            </div>
-
-            <div class="input-block">
-              <label for="description">Descrição</label>
-                <textarea 
-                  id="description"  
-                  name="description"
-                  maxLength={300} 
-                  required
-                  ></textarea>
             </div>
 
            

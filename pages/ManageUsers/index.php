@@ -15,7 +15,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
 
 
-  <title>Admin | Dashboard</title>
+  <title>Administrador de lar | Utentes </title>
   
 </head>
 <body>
@@ -53,97 +53,15 @@
             <h1>Lista de lares</h1>
 
             <div class="buttons-container">
-              <a href="../NewHome" class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-10 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-blue-400 hover:bg-blue-500">
-                Criar novo
+              <a href="../NewUser" class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-10 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-blue-400 hover:bg-blue-500">
+                Registar utente
               </a>
             </div>
         </div>
 
        
-        <div class="home-list">
-
-        
-
-          <ul >
-            <li class="home">
-              <a href="../HomeDetails?id=0">
-                  <div class="home-info">
-                      <h1>Lar de Espinho</h1>
-
-                      <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                      </p>
-                  </div>
-                  <div>
-
-                    <img src="../../assets/images/sea.png" alt="">
-                  </div>
-              </a>
-            </li>
-
-            <li class="home">
-              <a href="../HomeDetails?id=0">
-                  <div class="home-info">
-                      <h1>Lar de Espinho</h1>
-
-                      <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                      </p>
-                  </div>
-                  <div>
-
-                    <img src="../../assets/images/sea.png" alt="">
-                  </div>
-              </a>
-            </li>
-
-            <li class="home">
-              <a href="../HomeDetails?id=0">
-                  <div class="home-info">
-                      <h1>Lar de Espinho</h1>
-
-                      <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                      </p>
-                  </div>
-                  <div>
-
-                    <img src="../../assets/images/sea.png" alt="">
-                  </div>
-              </a>
-            </li>
-
-            <li class="home">
-              <a href="../HomeDetails?id=0">
-                  <div class="home-info">
-                      <h1>Lar de Espinho</h1>
-
-                      <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                      </p>
-                  </div>
-                  <div>
-
-                    <img src="../../assets/images/sea.png" alt="">
-                  </div>
-              </a>
-            
-
-          </ul>
-        
-        </div>
-
-       
-      </div>
-
-      <div class="table-section">
-          <div class="title">
-            <h1>Utentes</h1>
-          </div>
-  
-      <div class="table-container">
-       
-          <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+        <div class="users">
+        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
             <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
               <table class="min-w-full divide-y divide-gray-200">
                 <thead class="bg-gray-50">
@@ -161,7 +79,7 @@
                       
                     </th>
                     <th scope="col" class="relative px-6 py-3">
-                      <span class="sr-only">Edit</span>
+                      <span class="">Edit</span>
                     </th>
                   </tr>
                 </thead>
@@ -193,24 +111,22 @@
                           SOS
                       </span>
                     </td>
+                    <td class="px-6 py-4 edit ">
+                      <a href="">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+                        </svg>
+                      </a>
+                    </td>
                   </tr>
                 </tbody>
               </table>
             </div>
           
         </div>
-      </div>
-      <br>
-      <br>
-      <br>
-   
-      </div>
-     
-    
-    
-    
-</div>
+        </div>
 
+          
        
 
   </div>
