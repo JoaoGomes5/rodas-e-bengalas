@@ -26,14 +26,6 @@ body::-webkit-scrollbar {
   margin: 0 40px 0 40px;
 }
 
-.header a {
-  background: rgba(249, 7, 22, 0.7);
-}
-
-.header a:hover {
-  background: rgba(249, 7, 22, 1);
-}
-
 .header-container {
   background-color: #fff;
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.6);

@@ -51,7 +51,7 @@
           <a href="../ClientLogin">
             <img src="../../assets/images/client-option.jpg" alt="">
 
-            <p>Sou um cliente</p>
+            <p>Sou um utente</p>
           </a>
         </div>
 
