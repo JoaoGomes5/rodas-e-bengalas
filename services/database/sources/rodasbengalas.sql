@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.7deb1
+-- version 5.0.4deb2ubuntu5
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jan 11, 2022 at 05:43 AM
--- Server version: 8.0.27-0ubuntu0.21.04.1
--- PHP Version: 7.4.16
+-- Generation Time: Jan 15, 2022 at 03:27 AM
+-- Server version: 8.0.27-0ubuntu0.21.10.1
+-- PHP Version: 8.0.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -55,7 +54,8 @@ CREATE TABLE `homes` (
   `id` int NOT NULL,
   `idDistrict` int NOT NULL,
   `address` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `description` varchar(255) NOT NULL
+  `description` varchar(255) NOT NULL,
+  `image_link` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
@@ -122,6 +122,8 @@ CREATE TABLE `medicinemedication` (
 
 CREATE TABLE `users` (
   `id` int NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `type` int NOT NULL COMMENT '0: Admin\r\n1: Home admin\r\n2: Technician\r\n3: Client',
   `firstName` varchar(255) NOT NULL,
   `lastName` varchar(255) NOT NULL,

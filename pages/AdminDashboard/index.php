@@ -32,6 +32,14 @@
           </div>
         
           <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
+            <a href="../AdminProfile" class="">
+
+                        <div class="flex-shrink-0 h-10 w-10">
+                          <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="">
+                        </div>
+
+            </a>
+
             <a href="#" class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-10 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white ">
               Sair
             </a>
@@ -45,10 +53,6 @@
             <h1>Lista de lares</h1>
 
             <div class="buttons-container">
-              <a href="#" class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-10 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-green-600 hover:bg-green-700">
-                Estatisticas
-              </a>
-
               <a href="#" class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-10 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-blue-400 hover:bg-blue-500">
                 Criar novo
               </a>
