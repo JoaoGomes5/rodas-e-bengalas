@@ -26,14 +26,6 @@ body::-webkit-scrollbar {
   margin: 0 40px 0 40px;
 }
 
-.header a {
-  background: rgba(249, 7, 22, 0.7);
-}
-
-.header a:hover {
-  background: rgba(249, 7, 22, 1);
-}
-
 .profile-btn {
 }
 
