@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
+ 
   
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,7 +16,7 @@
 
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script type="text/javascript" src="./index.js"></script>
-
+  <link rel="stylesheet" href="./styles.css">
 
   <title>Admin | Dashboard</title>
   
@@ -34,8 +34,8 @@
       </a>
 
                 <div class="relative inline-block">
-                  <img class=" h-40 w-40 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="">
-                  <a class="absolute bottom-0 right-0 inline-block w-8 h-8 bg-blue-400 border-2 border-white rounded-full picker">
+                  <img class="h-50 w-50 rounded-full profile" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="">
+                  <a class="absolute bottom-0 right-0 inline-block w-20 h-20 bg-blue-400 border-2 border-white rounded-full picker">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="#FFF">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -49,68 +49,80 @@
   </div>
 
   <div class="content">
-      <form action="">
-        <div class="data">
-            <div>
-                <div class="relative text-gray-600 focus-within:text-blue-400 input">
-                  <span class="absolute inset-y-0 left-0 flex items-center pl-2">
-                    
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                    </svg>
-                    
-                  </span>
-                  <input type="text" name="name" id="name" class="py-2 text-sm text-white rounded-md pl-10 focus:outline-none  text-gray-900" placeholder="Nome" autocomplete="off" required>
-                </div>
-            
-                <div class="relative text-gray-600 focus-within:text-blue-400 input">
-                  <span class="absolute inset-y-0 left-0 flex items-center pl-2">
-                    
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                    
-                  </span>
-                  <input type="email" name="email" id="email" class="py-2 text-sm text-white rounded-md pl-10 focus:outline-none  text-gray-900" placeholder="E-mail" autocomplete="off" required>
-                </div>
+  <form class="create-orphanage-form" method="POST">
+          <fieldset>
+            <legend>Meus dados</legend>
+            <div class="input-block">
+              <label for="first-name">Primeiro nome</label>
+                <input 
+                  required
+                  id="first-name" 
+                  name="first-name"
+                />
             </div>
 
-            <div>
-              <div class="relative text-gray-600 focus-within:text-blue-400 input">
-                <span class="absolute inset-y-0 left-0 flex items-center pl-2">
-                  
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                  </svg>
-                  
-                </span>
-                <input type="password" name="current" id="current" class="py-2 text-sm text-white rounded-md pl-10 focus:outline-none  text-gray-900" placeholder="Password atual" autocomplete="off" required>
-              </div>
-          
-              <div class="relative text-gray-600 focus-within:text-blue-400 input">
-                <span class="absolute inset-y-0 left-0 flex items-center pl-2">
-                  
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                  </svg>
-                  
-                </span>
-                <input type="password" name="new" id="new" class="py-2 text-sm text-white rounded-md pl-10 focus:outline-none  text-gray-900" placeholder="Password nova" autocomplete="off" required>
-              </div>
+            <div class="input-block">
+              <label for="last-name">Ultimo nome</label>
+                <input 
+                  required
+                  id="last-name" 
+                  name="last-name"
+                  autocomplete="off"
+                />
             </div>
-        </div>
+
+            <div class="input-block">
+              <label for="email">E-Mail</label>
+              <input 
+                  type="email"
+                  required
+                  id="email" 
+                  name="email"
+                  autocomplete="off"
+                />
+            </div>
+
+            <div class="input-block">
+              <label for="current">Password atual</label>
+                <input 
+                  type="password"
+                  required
+                  id="current" 
+                  name="current"
+                  autocomplete="off"
+                />
+            </div>
+
+            <div class="input-block">
+            <label for="new">Password nova</label>
+                <input 
+                  type="password"
+                  required
+                  id="new" 
+                  name="new"
+                  autocomplete="off"
+                />
+            </div>
+
+           
+          </fieldset>
 
         
-        
-
-        <button type="submit" class="submit-btn">
-          Submeter
-        </button>
-      </form>
-
+          <button class="confirm-button" type="submit">
+            Confirmar
+          </button>
+        </form>
   </div>
 
-  <div class="fixed z-10 inset-0 overflow-y-auto modal" aria-labelledby="modal-title" role="dialog" aria-modal="true" id="delete-modal">
+
+  
+  
+  
+
+
+
+
+ <div class="fixed z-10 inset-0 overflow-y-auto modal" aria-labelledby="modal-title" role="dialog" aria-modal="true" id="delete-modal">
     <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
       <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
 
@@ -140,7 +152,7 @@
       </svg>
                     
                   </span>
-                  <input type="text" name="url" id="url" class="py-2 text-sm text-white rounded-md pl-10 focus:outline-none  text-gray-900" placeholder="Nova url" autocomplete="off" required>
+                  <input type="text" name="url" id="url" class="py-2 text-sm text-black rounded-md pl-10" placeholder="Nova url" autocomplete="off" required>
                 </div>
               </div>
             </div>
@@ -156,6 +168,6 @@
         </div>
       </div>
     </div>
-</div>
+</div> 
 </body>
 </html>

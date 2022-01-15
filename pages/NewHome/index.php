@@ -59,7 +59,7 @@
 <div class="content">
   
   
-    <form class="create-orphanage-form" method="POST">
+<form class="create-orphanage-form" method="POST">
           <fieldset>
             <legend>Criar novo lar</legend>
             <div class="input-block">

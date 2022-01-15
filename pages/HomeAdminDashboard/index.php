@@ -68,7 +68,7 @@
         <div class="options">
 
           <div class="option">
-            <a href="../ClientLogin">
+            <a href="../ManageUsers">
               <img src="../../assets/images/couple.png" alt="">
 
               <p>Utentes</p>
