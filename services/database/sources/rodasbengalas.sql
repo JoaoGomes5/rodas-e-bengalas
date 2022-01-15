@@ -1,4 +1,5 @@
 -- phpMyAdmin SQL Dump
+
 -- version 5.0.4deb2ubuntu5
 -- https://www.phpmyadmin.net/
 --
@@ -6,6 +7,7 @@
 -- Generation Time: Jan 15, 2022 at 03:27 AM
 -- Server version: 8.0.27-0ubuntu0.21.10.1
 -- PHP Version: 8.0.8
+
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,39 +20,40 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `rodasbengalas`
+-- Banco de dados: `rodasbengalas`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `brand`
+-- Estrutura da tabela `brand`
 --
 
 CREATE TABLE `brand` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `districts`
+-- Estrutura da tabela `districts`
 --
 
 CREATE TABLE `districts` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `homes`
+-- Estrutura da tabela `homes`
 --
 
 CREATE TABLE `homes` (
+<<<<<<< HEAD
   `id` int NOT NULL,
   `idDistrict` int NOT NULL,
   `address` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
@@ -58,109 +61,117 @@ CREATE TABLE `homes` (
   `image_link` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `intake`
+-- Estrutura da tabela `intake`
 --
 
 CREATE TABLE `intake` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `description` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `medication`
+-- Estrutura da tabela `medication`
 --
 
 CREATE TABLE `medication` (
-  `id` int NOT NULL,
-  `idTechnician` int NOT NULL,
-  `idClient` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+  `id` int(11) NOT NULL,
+  `idTechnician` int(11) NOT NULL,
+  `idClient` int(11) NOT NULL,
+  `startDate` date NOT NULL,
+  `endDate` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `medicine`
+-- Estrutura da tabela `medicine`
 --
 
 CREATE TABLE `medicine` (
-  `id` int NOT NULL,
-  `quantity` int NOT NULL,
+  `id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
   `activeIngredient` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `idBrand` int NOT NULL,
-  `idIntake` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+  `idBrand` int(11) NOT NULL,
+  `idIntake` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `medicinemedication`
+-- Estrutura da tabela `medicinemedication`
 --
 
 CREATE TABLE `medicinemedication` (
-  `id` int NOT NULL,
-  `idMedicine` int NOT NULL,
-  `idMedication` int NOT NULL,
+  `id` int(11) NOT NULL,
+  `idMedicine` int(11) NOT NULL,
+  `idMedication` int(11) NOT NULL,
   `startDate` date NOT NULL,
   `endDate` date DEFAULT NULL,
-  `intakeFrequency` int NOT NULL COMMENT 'Hours\r\nex.: 12, 24, 48, 72, ...',
+  `intakeFrequency` int(11) NOT NULL COMMENT 'Hours\r\nex.: 12, 24, 48, 72, ...',
   `isSOS` tinyint(1) DEFAULT NULL,
   `isSingleDose` tinyint(1) DEFAULT NULL,
-  `quantity` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+  `quantity` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Estrutura da tabela `users`
 --
 
 CREATE TABLE `users` (
+<<<<<<< HEAD
   `id` int NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `type` int NOT NULL COMMENT '0: Admin\r\n1: Home admin\r\n2: Technician\r\n3: Client',
+=======
+  `id` int(11) NOT NULL,
+  `type` int(11) NOT NULL COMMENT '0: Admin\r\n1: Home admin\r\n2: Technician\r\n3: Client',
+>>>>>>> 619f695426d4fe89de55ddcf20cfebda8685fdad
   `firstName` varchar(255) NOT NULL,
   `lastName` varchar(255) NOT NULL,
-  `idHome` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+  `idHome` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Indexes for dumped tables
+-- Índices para tabelas despejadas
 --
 
 --
--- Indexes for table `brand`
+-- Índices para tabela `brand`
 --
 ALTER TABLE `brand`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `districts`
+-- Índices para tabela `districts`
 --
 ALTER TABLE `districts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `homes`
+-- Índices para tabela `homes`
 --
 ALTER TABLE `homes`
   ADD PRIMARY KEY (`id`),
   ADD KEY `idDistrict` (`idDistrict`);
 
 --
--- Indexes for table `intake`
+-- Índices para tabela `intake`
 --
 ALTER TABLE `intake`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `medication`
+-- Índices para tabela `medication`
 --
 ALTER TABLE `medication`
   ADD PRIMARY KEY (`id`),
@@ -168,7 +179,7 @@ ALTER TABLE `medication`
   ADD KEY `idClient` (`idClient`);
 
 --
--- Indexes for table `medicine`
+-- Índices para tabela `medicine`
 --
 ALTER TABLE `medicine`
   ADD PRIMARY KEY (`id`),
@@ -176,7 +187,7 @@ ALTER TABLE `medicine`
   ADD KEY `idIntake` (`idIntake`);
 
 --
--- Indexes for table `medicinemedication`
+-- Índices para tabela `medicinemedication`
 --
 ALTER TABLE `medicinemedication`
   ADD PRIMARY KEY (`id`),
@@ -184,89 +195,89 @@ ALTER TABLE `medicinemedication`
   ADD KEY `idMedicine` (`idMedicine`);
 
 --
--- Indexes for table `users`
+-- Índices para tabela `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de tabelas despejadas
 --
 
 --
--- AUTO_INCREMENT for table `brand`
+-- AUTO_INCREMENT de tabela `brand`
 --
 ALTER TABLE `brand`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `districts`
+-- AUTO_INCREMENT de tabela `districts`
 --
 ALTER TABLE `districts`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `homes`
+-- AUTO_INCREMENT de tabela `homes`
 --
 ALTER TABLE `homes`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `intake`
+-- AUTO_INCREMENT de tabela `intake`
 --
 ALTER TABLE `intake`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `medication`
+-- AUTO_INCREMENT de tabela `medication`
 --
 ALTER TABLE `medication`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `medicine`
+-- AUTO_INCREMENT de tabela `medicine`
 --
 ALTER TABLE `medicine`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `medicinemedication`
+-- AUTO_INCREMENT de tabela `medicinemedication`
 --
 ALTER TABLE `medicinemedication`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Constraints for dumped tables
+-- Restrições para despejos de tabelas
 --
 
 --
--- Constraints for table `homes`
+-- Limitadores para a tabela `homes`
 --
 ALTER TABLE `homes`
   ADD CONSTRAINT `idDistrict` FOREIGN KEY (`idDistrict`) REFERENCES `districts` (`id`);
 
 --
--- Constraints for table `medication`
+-- Limitadores para a tabela `medication`
 --
 ALTER TABLE `medication`
   ADD CONSTRAINT `idClient` FOREIGN KEY (`idClient`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `idTechnician` FOREIGN KEY (`idTechnician`) REFERENCES `users` (`id`);
 
 --
--- Constraints for table `medicine`
+-- Limitadores para a tabela `medicine`
 --
 ALTER TABLE `medicine`
   ADD CONSTRAINT `idBrand` FOREIGN KEY (`idBrand`) REFERENCES `brand` (`id`),
   ADD CONSTRAINT `idIntake` FOREIGN KEY (`idIntake`) REFERENCES `intake` (`id`);
 
 --
--- Constraints for table `medicinemedication`
+-- Limitadores para a tabela `medicinemedication`
 --
 ALTER TABLE `medicinemedication`
   ADD CONSTRAINT `idMedication` FOREIGN KEY (`idMedication`) REFERENCES `medication` (`id`),
