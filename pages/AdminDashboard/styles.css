@@ -116,3 +116,14 @@ body::-webkit-scrollbar {
   max-width: 90vw;
   margin-top: 20px;
 }
+
+.table-section {
+  width: 100%;
+}
+
+.table-section h2 {
+  font-size: 26px;
+  font-weight: bold;
+  color: #123952;
+  margin-bottom: 20px;
+}
