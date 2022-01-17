@@ -108,9 +108,9 @@ class User {
 
     /*
     Devemos chamar a função da seguinte forma:
-        $user = User::get_client_by_id(5);
+        $user = User::get_by_id(5);
     */
-    public static function get_client_by_id(int $client_id) {
+    public static function get_by_id(int $client_id) {
         $conn = get_connection();
 
         $sql = "SELECT * FROM users WHERE id = $client_id";

@@ -1,12 +1,12 @@
 <?php
 require_once(dirname(__FILE__, 3) . "/src/database/connection.php");
 require_once(dirname(__FILE__, 3) . "/src/medicine/Medicine.php");
-require_once(dirname(__FILE__, 3) . "/src/medication/Medication.php");
+require_once(dirname(__FILE__, 3) . "/src/medicationSpecification/Medication.php");
 
-class MedicineMedication {
+class MedicationSpecification {
     private $id;
     private Medicine $medicine;
-    private Medication $medication;
+    private Medication $medicationSpecification;
     private $startDate;
     private $endDate;
     private $intakeFrequency;
@@ -30,12 +30,12 @@ class MedicineMedication {
         return $this->medicine;
     }
 
-    public function set_medication($medication) {
-        $this->medication = $medication;
+    public function set_medication($medicationSpecification) {
+        $this->medicationSpecification = $medicationSpecification;
     }
 
     public function get_medication() {
-        return $this->medication;
+        return $this->medicationSpecification;
     }
 
     public function set_start_date($startDate) {
@@ -86,10 +86,119 @@ class MedicineMedication {
         return $this->quantity;
     }
 
+    public static function create($medicine, $medication, $startDate, $endDate, $intakeFrequency, $isSOS, $isSingleDose, $quantity){
+        $id_medicine = $medicine->get_id();
+        $id_medication = $medication->get_id();
+        $conn = get_connection();
+
+        $sql = "INSERT INTO medicinemedication (idMedicine, idMedication, startDate, endDate, intakeFrequency, isSOS, isSingleDose, quantity) VALUES ('$id_medicine', '$id_medication', '$startDate', '$endDate', '$intakeFrequency', '$isSOS', '$isSingleDose', '$quantity')";
+
+        if ($conn->query($sql) === TRUE) {
+            $conn->close();
+
+            $medicationSpecification = new MedicationSpecification();
+            $medicationSpecification = $medicationSpecification->get_last_inserted();
+
+            return $medicationSpecification;
+        } else {
+            $conn->close();
+            return false;
+        }
+    }
+
+    public function update($medicine, $medication, $startDate, $endDate, $intakeFrequency, $isSOS, $isSingleDose, $quantity) {
+        $id = $this->get_id();
+        $id_medicine = $medicine->get_id();
+        $id_medication = $medication->get_id();
+        $conn = get_connection();
+
+        $sql = "UPDATE medicinemedication SET idMedicine = $id_medicine, idMedication = $id_medication, startDate = $startDate, endDate = $endDate, intakeFrequency = $intakeFrequency, isSOS = $isSOS, isSingleDose = $isSingleDose, quantity = $quantity WHERE id = $id";
+
+        if ($conn->query($sql) === TRUE) {
+            $conn->close();
+            return true;
+        } else {
+            $conn->close();
+            return false;
+        }
+    }
+
+    public function delete()  {
+        $conn = get_connection();
+        $id = $this->get_id();
+
+        $sql = "DELETE * FROM medicinemedication WHERE id = $id";
+
+        if ($conn->query($sql) === TRUE) {
+            $conn->close();
+            return true;
+        } else {
+            $conn->close();
+            return false;
+        }
+    }
+
+    public static function get_by_id(int $id) {
+        $conn = get_connection();
+
+        $sql = "SELECT * FROM medicinemedication WHERE id = $id";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $conn->close();
+
+            $medicationSpecification = new MedicationSpecification();
+            $medicationSpecification = $medicationSpecification->row_to_object($row);
+
+            return $medicationSpecification;
+        } else {
+            $conn->close();
+            return null;
+        }
+    }
+
+    private function get_last_inserted(){
+        $conn = get_connection();
+
+        $sql = "SELECT * FROM medicinemedication ORDER BY id DESC LIMIT 1";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $conn->close();
+
+            $medicationSpecification = $this->row_to_object($row);
+
+            return $medicationSpecification;
+        } else {
+            $conn->close();
+            return null;
+        }
+    }
+
+    private function row_to_object($medicationSpecification_row) {
+        $medicationSpecification = new MedicationSpecification();
+        $medicine = Medicine::get_by_id($medicationSpecification_row["idMedicine"]);
+        $medication = Medication::get_by_id($medicationSpecification_row["idMedication"]);
+
+        $medicationSpecification->set_id($medicationSpecification_row["id"]);
+        $medicationSpecification->set_medicine($medicine);
+        $medicationSpecification->set_medication($medication);
+        $medicationSpecification->set_start_date($medicationSpecification_row["startDate"]);
+        $medicationSpecification->set_end_date($medicationSpecification_row["endDate"]);
+        $medicationSpecification->set_intake_frequency($medicationSpecification_row["intakeFrequency"]);
+        $medicationSpecification->set_is_sos($medicationSpecification_row["isSOS"]);
+        $medicationSpecification->set_is_single_dose($medicationSpecification_row["isSingleDose"]);
+        $medicationSpecification->set_quantity($medicationSpecification_row["quantity"]);
+
+        return $medicationSpecification;
+    }
+
     public function to_string(){
         $id = $this->get_id();
         $medicine = $this->get_medicine();
-        $medication = $this->get_medication();
+        $medicationSpecification = $this->get_medication();
         $startDate = $this->get_start_date();
         $endDate = $this->get_end_date();
         $intakeFrequency = $this->get_intake_frequency();
@@ -97,7 +206,7 @@ class MedicineMedication {
         $isSingleDose = $this->get_is_single_dose();
         $quantity = $this->get_quantity();
 
-        return "[ id = '$id', medicine = '$medicine->to_string()', medication = '$medication->to_string()', startDate = '$startDate', endDate = '$endDate', intakeFrequency = '$intakeFrequency', isSOS = '$isSOS', isSingleDose = '$isSingleDose', quantity = '$quantity' ]";
+        return "[ id = '$id', medicine = '$medicine->to_string()', medicationSpecification = '$medicationSpecification->to_string()', startDate = '$startDate', endDate = '$endDate', intakeFrequency = '$intakeFrequency', isSOS = '$isSOS', isSingleDose = '$isSingleDose', quantity = '$quantity' ]";
     }
 }
 
