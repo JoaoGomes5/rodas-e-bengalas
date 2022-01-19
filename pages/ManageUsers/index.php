@@ -56,7 +56,7 @@
 
   <div class="content">
         <div class="title">
-            <h1>Lista de lares</h1>
+            <h1>Lista de Utentes</h1>
 
             <div class="buttons-container">
               <a href="../NewUser" class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-10 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-blue-400 hover:bg-blue-500">

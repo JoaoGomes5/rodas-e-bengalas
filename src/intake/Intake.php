@@ -3,7 +3,7 @@ require_once(dirname(__FILE__, 3) . "/src/database/connection.php");
 
 class Intake {
     private $id;
-    private $description;
+    private $name;
 
     public function set_id($id) {
         $this->id = $id;
@@ -13,12 +13,12 @@ class Intake {
         return $this->id;
     }
 
-    public function set_description($description) {
-        $this->description = $description;
+    public function set_name($name) {
+        $this->name = $name;
         $id = $this->get_id();
         $conn = get_connection();
 
-        $sql = "UPDATE intake SET description = $description WHERE id = $id";
+        $sql = "UPDATE intake SET name = $name WHERE id = $id";
 
         if ($conn->query($sql) === TRUE) {
             $conn->close();
@@ -29,15 +29,15 @@ class Intake {
         }
     }
 
-    public function get_description() {
-        return $this->description;
+    public function get_name() {
+        return $this->name;
     }
 
-    public function update($description) {
+    public function update($name) {
         $id = $this->get_id();
         $conn = get_connection();
 
-        $sql = "UPDATE intake SET description = $description WHERE id = $id";
+        $sql = "UPDATE intake SET name = $name WHERE id = $id";
 
         if ($conn->query($sql) === TRUE) {
             $conn->close();
@@ -48,10 +48,10 @@ class Intake {
         }
     }
 
-    public static function create($description){
+    public static function create($name){
         $conn = get_connection();
 
-        $sql = "INSERT INTO intake (description) VALUES ('$description')";
+        $sql = "INSERT INTO intake (name) VALUES ('$name')";
 
         if ($conn->query($sql) === TRUE) {
             $conn->close();
@@ -124,16 +124,16 @@ class Intake {
         $intake = new Intake();
 
         $intake->set_id($intake_row["id"]);
-        $intake->set_description($intake_row["description"]);
+        $intake->set_name($intake_row["name"]);
 
         return $intake;
     }
 
     public function to_string(){
         $id = $this->get_id();
-        $description = $this->get_description();
+        $name = $this->get_name();
 
-        return "[ id = '$id', description = '$description' ]";
+        return "[ id = '$id', name = '$name' ]";
     }
 }
 
