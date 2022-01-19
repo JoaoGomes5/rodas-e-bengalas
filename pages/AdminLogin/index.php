@@ -1,3 +1,27 @@
+<?php
+require_once(dirname(__FILE__, 3) . "/src/user/User.php");
+require_once(dirname(__FILE__, 3) . "/src//database/connection.php");
+
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+  $email = $_POST['email'];
+  $password = md5($_POST['password']); 
+
+  $user = User::get_by_email_and_password($email, $password);
+
+  if ($user != null) { // Os dados inseridos são válidos
+    if ($user->get_type() == 0) {
+      session_start();
+      $_SESSION['user'] = $user;
+      
+      header("location: ../AdminDashboard/index.php");
+    } else {
+      header("location: index.php?err=2"); // Existe utilizador mas não tem permissões de Administrador
+    }
+  } else { // Não existe utilizador com os dados inseridos
+    header("location: index.php?err=1");
+  }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

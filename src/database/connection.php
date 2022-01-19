@@ -5,7 +5,7 @@ function get_connection(){
      $Jpassword = "mysql";
      $server = "localhost"; //serverName\instanceName
      $mysql_user = "root";
-     $mysql_password = $Jpassword;
+     $mysql_password = $password;
      $database = "rodasbengalas";
 
     $conn = mysqli_connect($server, $mysql_user, $mysql_password, $database);

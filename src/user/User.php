@@ -130,6 +130,26 @@ class User {
         }
     }
 
+    public static function get_by_email_and_password($email, $password) {
+        $conn = get_connection();
+
+        $sql = "SELECT * FROM users WHERE email = '$email' AND password = '$password'";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $conn->close();
+
+            $user = new User();
+            $user = $user->row_to_object($row);
+
+            return $user;
+        } else {
+            $conn->close();
+            return null;
+        }
+    }
+
     /*
     Devemos chamar a função da seguinte forma:
         $user = User::create(3, "João", "Brito", 0);
