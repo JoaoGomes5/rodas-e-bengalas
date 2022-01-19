@@ -27,7 +27,7 @@
 <div class="header-container fixed w-full z-10 top-0">
     <header class="header">
       <div class="flex justify-between items-center py-6 md:justify-start md:space-x-10">
-      <a href="../AdminDashboard" class="bg-gray-400 hover:bg-gray-500 py-3    px-3 rounded inline-flex items-center ">
+      <a href="../ManageMedicine" class="bg-gray-400 hover:bg-gray-500 py-3    px-3 rounded inline-flex items-center ">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="#FFF">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                         </svg>
@@ -40,7 +40,7 @@
           </div>
         
           <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-            <a href="../AdminProfile" class="">
+            <a href="../Profile" class="">
 
                         <div class="flex-shrink-0 h-10 w-10">
                           <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="">
@@ -61,7 +61,7 @@
   
 <form class="create-orphanage-form" method="POST">
           <fieldset>
-            <legend>Criar novo lar</legend>
+            <legend>Registar medicamento</legend>
             <div class="input-block">
               <label for="name">Nome</label>
                 <input 
@@ -72,33 +72,33 @@
             </div>
 
             <div class="input-block">
-              <label for="address">Morada</label>
-                <textarea 
-                  required
-                  id="address" 
-                  name="address"
-                  maxLength={300} ></textarea>
-            </div>
-
-            <div class="input-block">
-              <label for="url">URL da foto</label>
+              <label for="activeIngredient">Ingrediente ativo</label>
                 <input 
                   required
-                  id="url" 
-                  name="url"
+                  id="activeIngredient" 
+                  name="activeIngredient"
                 />
             </div>
 
             <div class="input-block">
-              <label for="description">Descrição</label>
-                <textarea 
-                  id="description"  
-                  name="description"
-                  maxLength={300} 
+              <label for="brand">Marca</label>
+                <input 
                   required
-                  ></textarea>
+                  id="brand" 
+                  name="brand"
+                />
             </div>
 
+            <div class="input-block">
+              <label for="intake">Toma</label>
+                <input 
+                  required
+                  id="intake" 
+                  name="intake"
+                />
+            </div>
+
+  
            
           </fieldset>
 

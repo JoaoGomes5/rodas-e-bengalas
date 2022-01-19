@@ -18,7 +18,7 @@
   <script type="text/javascript" src="./index.js"></script>
 
 
-  <title>Administrador de lar | Editar Utente</title>
+  <title>Administrador de lar | Editar utente</title>
   
 </head>
 <body>
@@ -27,7 +27,7 @@
 <div class="header-container fixed w-full z-10 top-0">
     <header class="header">
       <div class="flex justify-between items-center py-6 md:justify-start md:space-x-10">
-      <a href="../AdminDashboard" class="bg-gray-400 hover:bg-gray-500 py-3    px-3 rounded inline-flex items-center ">
+      <a href="../ManageUsers" class="bg-gray-400 hover:bg-gray-500 py-3    px-3 rounded inline-flex items-center ">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="#FFF">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                         </svg>
@@ -40,7 +40,7 @@
           </div>
         
           <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-            <a href="../AdminProfile" class="">
+            <a href="../Profile" class="">
 
                         <div class="flex-shrink-0 h-10 w-10">
                           <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="">
@@ -61,23 +61,48 @@
   
     <form class="create-orphanage-form" method="POST">
           <fieldset>
-            <legend>Editar utente</legend>
+            <div>
+              <legend>Editar utente</legend>
+            </div>
             <div class="input-block">
-              <label htmlFor="name">Nome</label>
+              <label for="first-name">Primeiro nome</label>
                 <input 
                   required
-                  id="name" 
-                  name="name"
+                  id="first-name" 
+                  name="first-name"
                 />
             </div>
 
             <div class="input-block">
-              <label for="address">Morada</label>
-                <textarea 
+              <label for="last-name">Ultimo nome</label>
+                <input 
                   required
-                  id="address" 
-                  name="address"
-                  maxLength={300} ></textarea>
+                  id="last-name" 
+                  name="last-name"
+                  autocomplete="off"
+                />
+            </div>
+
+            <div class="input-block">
+              <label for="email">E-Mail</label>
+              <input 
+                  type="email"
+                  required
+                  id="email" 
+                  name="email"
+                  autocomplete="off"
+                />
+            </div>
+
+            <div class="input-block">
+              <label for="password">Password</label>
+                <input 
+                  type="password"
+                  required
+                  id="password" 
+                  name="password"
+                  autocomplete="off"
+                />
             </div>
 
             <div class="input-block">
@@ -86,17 +111,8 @@
                   required
                   id="url" 
                   name="url"
+                  autocomplete="off"
                 />
-            </div>
-
-            <div class="input-block">
-              <label for="description">Descrição</label>
-                <textarea 
-                  id="description"  
-                  name="description"
-                  maxLength={300} 
-                  required
-                  ></textarea>
             </div>
 
            
@@ -106,6 +122,9 @@
           <button class="confirm-button" type="submit">
             Confirmar
           </button>
+          <a href="" class="delete-button">
+            Eliminar utente
+          </a>
         </form>
     
 </div>
