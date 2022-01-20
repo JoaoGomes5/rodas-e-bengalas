@@ -61,7 +61,7 @@
   
 <form class="create-orphanage-form" method="POST">
           <fieldset>
-            <legend>Registar medicamento</legend>
+            <legend>Registar terapêutica</legend>
             <div class="input-block">
               <label for="name">Nome</label>
                 <input 
@@ -95,6 +95,16 @@
                   required
                   id="intake" 
                   name="intake"
+                />
+            </div>
+
+            <div class="input-block">
+              <label for="stock">Stock</label>
+                <input 
+                  required
+                  id="stock" 
+                  name="stock"
+                  type="number"
                 />
             </div>
 

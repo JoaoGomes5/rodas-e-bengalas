@@ -311,6 +311,31 @@ class User {
         }
     }
 
+    public static function get_all(){
+        $conn = get_connection();
+
+        $sql = "SELECT * FROM users ";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            $users[] = new User();
+
+            while($row = $result->fetch_assoc()) {
+                $user = new User();
+                $user = $user->row_to_object($row);
+                
+                array_push($users, $user);
+            }
+
+            array_shift($users);
+            $conn->close();
+            return $users;
+        } else {
+            $conn->close();
+            return null;
+        }
+    }
+
     public function to_string(){
         $id = $this->get_id();
         $type = $this->get_type();

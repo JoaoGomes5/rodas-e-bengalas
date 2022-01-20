@@ -1,3 +1,12 @@
+<?php
+  require_once(dirname(__FILE__, 3) . "/src/user/User.php");
+  $users = User::get_all();
+  session_start();
+
+  $_SESSION['photo'] ='https://pbs.twimg.com/profile_images/1214689195740057601/JXzTqXbS_400x400.jpg';
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,6 +26,9 @@
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script type="text/javascript" src="./index.js"></script>
 
+   <!-- JIT SUPPORT, for using peer-* below -->
+   <script src="https://unpkg.com/tailwindcss-jit-cdn"></script>
+
 
   <title>Admin | Dashboard</title>
   
@@ -27,7 +39,7 @@
 <div class="header-container fixed w-full z-10 top-0">
     <header class="header">
       <div class="flex justify-between items-center py-6 md:justify-start md:space-x-10">
-      <a href="../ManageMedicine" class="bg-gray-400 hover:bg-gray-500 py-3    px-3 rounded inline-flex items-center ">
+      <a href="../TechnicianDashboard" class="bg-gray-400 hover:bg-gray-500 py-3    px-3 rounded inline-flex items-center ">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="#FFF">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                         </svg>
@@ -43,7 +55,7 @@
             <a href="../Profile" class="">
 
                         <div class="flex-shrink-0 h-10 w-10">
-                          <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="">
+                          <img class="h-10 w-10 rounded-full" src="<?= $_SESSION['photo'];?>" alt="">
                         </div>
 
             </a>
@@ -61,7 +73,35 @@
   
 <form class="create-orphanage-form" method="POST">
           <fieldset>
-            <legend>Editar medicamento</legend>
+            <legend> Registo de terapêutica</legend>
+            
+
+              
+            <div class="input-block">
+              <label for="name">Utente</label>
+                <div class="sel sel--black-panther">
+                  <select name="select-profession" id="select-profession">
+                    <option value="" disabled>Selecione um utente</option>
+
+                    <?php foreach($users as $user) : ?>
+                      <option value="hacker"><?php echo $user->get_first_name(); ?> </option>
+                    <?php endforeach ?>
+                  
+                  </select>
+                </div>
+            </div>
+
+            <div class="input-block">
+              <label for="name">Medicamento</label>
+                
+                   <input class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" value="" id="flexCheckDefault">
+               
+            </div>
+          </fieldset>
+
+
+          <fieldset>
+            <legend>Informações</legend>
             <div class="input-block">
               <label for="name">Nome</label>
                 <input 
@@ -107,18 +147,18 @@
                   type="number"
                 />
             </div>
-
-  
+            
            
+          
+          
+
           </fieldset>
 
+          
         
           <button class="confirm-button" type="submit">
             Confirmar
           </button>
-          <a href="" class="delete-button">
-            Eliminar utente
-          </a>
         </form>
     
 </div>
