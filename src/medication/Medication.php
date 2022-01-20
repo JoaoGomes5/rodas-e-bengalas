@@ -7,7 +7,7 @@ class Medication {
     private $id;
     private User $technician;
     private User $client;
-    private MedicationSpecification $medicineMedication;
+    private MedicationSpecification $medicineMedication = array();
     private $startDate;
     private $endDate;
 
