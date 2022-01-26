@@ -150,6 +150,31 @@ class Medication {
         }
     }
 
+    public static function get_all(){
+        $conn = get_connection();
+
+        $sql = "SELECT * FROM medication";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            $medications[] = new Medication();
+
+            while($row = $result->fetch_assoc()) {
+                $medication = new Medication();
+                $medication = $medication->row_to_object($row);
+                
+                array_push($medications, $medication);
+            }
+
+            array_shift($medications);
+            $conn->close();
+            return $medications;
+        } else {
+            $conn->close();
+            return null;
+        }
+    }
+
     private function row_to_object($medication_row) {
         $medication = new Medication();
         $technician = User::get_by_id($medication_row["idTechnician"]);

@@ -6,7 +6,6 @@ require_once(dirname(__FILE__, 3) . "/src/medicationSpecification/Medication.php
 class MedicationSpecification {
     private $id;
     private Medicine $medicine;
-    private Medication $medicationSpecification;
     private $startDate;
     private $endDate;
     private $intakeFrequency;
@@ -28,14 +27,6 @@ class MedicationSpecification {
 
     public function get_medicine() {
         return $this->medicine;
-    }
-
-    public function set_medication($medicationSpecification) {
-        $this->medicationSpecification = $medicationSpecification;
-    }
-
-    public function get_medication() {
-        return $this->medicationSpecification;
     }
 
     public function set_start_date($startDate) {
@@ -158,6 +149,31 @@ class MedicationSpecification {
         }
     }
 
+    public static function get_all(){
+        $conn = get_connection();
+
+        $sql = "SELECT * FROM medicinemedication";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            $medicationSpecifications[] = new MedicationSpecification();
+
+            while($row = $result->fetch_assoc()) {
+                $medicationSpecification = new MedicationSpecification();
+                $medicationSpecification = $medicationSpecification->row_to_object($row);
+                
+                array_push($medicationSpecifications, $medicationSpecification);
+            }
+
+            array_shift($medicationSpecifications);
+            $conn->close();
+            return $medicationSpecifications;
+        } else {
+            $conn->close();
+            return null;
+        }
+    }
+
     private function get_last_inserted(){
         $conn = get_connection();
 
@@ -184,7 +200,6 @@ class MedicationSpecification {
 
         $medicationSpecification->set_id($medicationSpecification_row["id"]);
         $medicationSpecification->set_medicine($medicine);
-        $medicationSpecification->set_medication($medication);
         $medicationSpecification->set_start_date($medicationSpecification_row["startDate"]);
         $medicationSpecification->set_end_date($medicationSpecification_row["endDate"]);
         $medicationSpecification->set_intake_frequency($medicationSpecification_row["intakeFrequency"]);
@@ -198,7 +213,6 @@ class MedicationSpecification {
     public function to_string(){
         $id = $this->get_id();
         $medicine = $this->get_medicine();
-        $medicationSpecification = $this->get_medication();
         $startDate = $this->get_start_date();
         $endDate = $this->get_end_date();
         $intakeFrequency = $this->get_intake_frequency();
@@ -206,7 +220,7 @@ class MedicationSpecification {
         $isSingleDose = $this->get_is_single_dose();
         $quantity = $this->get_quantity();
 
-        return "[ id = '$id', medicine = '$medicine->to_string()', medicationSpecification = '$medicationSpecification->to_string()', startDate = '$startDate', endDate = '$endDate', intakeFrequency = '$intakeFrequency', isSOS = '$isSOS', isSingleDose = '$isSingleDose', quantity = '$quantity' ]";
+        return "[ id = '$id', medicine = '$medicine->to_string()', startDate = '$startDate', endDate = '$endDate', intakeFrequency = '$intakeFrequency', isSOS = '$isSOS', isSingleDose = '$isSingleDose', quantity = '$quantity' ]";
     }
 }
 

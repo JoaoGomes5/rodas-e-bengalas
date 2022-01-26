@@ -186,11 +186,11 @@ class Home {
 
     public function to_string(){
         $id = $this->get_id();
-        $district = $this->get_district();
+        $name = $this->get_name();
         $address = $this->get_address();
         $description = $this->get_description();
 
-        return "[ id = '$id', district = '$district->to_string()', address = '$address', description = '$description' ]";
+        return "[ id = '$id', name = '$name', address = '$address', description = '$description' ]";
     }
 }
 

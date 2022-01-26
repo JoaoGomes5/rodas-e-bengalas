@@ -219,6 +219,31 @@ class Medicine {
         return $medicine;
     }
 
+    public static function get_all(){
+        $conn = get_connection();
+
+        $sql = "SELECT * FROM medicine";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            $medicines[] = new Medicine();
+
+            while($row = $result->fetch_assoc()) {
+                $medicine = new Medicine();
+                $medicine = $medicine->row_to_object($row);
+                
+                array_push($medicines, $medicine);
+            }
+
+            array_shift($medicines);
+            $conn->close();
+            return $medicines;
+        } else {
+            $conn->close();
+            return null;
+        }
+    }
+
     public function to_string(){
         $id = $this->get_id();
         $quantity = $this->get_quantity();
