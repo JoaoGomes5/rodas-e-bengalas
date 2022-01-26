@@ -26,14 +26,6 @@ body::-webkit-scrollbar {
   margin: 0 40px 0 40px;
 }
 
-.header a {
-  background: rgba(249, 7, 22, 0.7);
-}
-
-.header a:hover {
-  background: rgba(249, 7, 22, 1);
-}
-
 .profile-btn {
 }
 
@@ -71,11 +63,13 @@ body::-webkit-scrollbar {
 }
 
 .home a {
+  max-width: 40%;
+  object-fit: fill;
+
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  width: 60%;
   margin: 40px 40px 0 40px;
 
   border: 0.79px solid #d3d3d3;
@@ -108,6 +102,20 @@ body::-webkit-scrollbar {
 
 .home a img {
   border-radius: 0px 10px 10px 0;
+  object-fit: cover;
+  max-width: 400px;
+  max-height: 250px;
+}
+
+.image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  max-width: 400px;
+  max-height: 250px;
+
+  object-fit: cover;
 }
 
 .home-list {

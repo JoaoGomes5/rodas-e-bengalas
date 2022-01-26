@@ -9,9 +9,12 @@ Forma de acesso aos dados de um utilizador:
 */
 class User {
     private $id;
+    private $email;
+    private $password;
     private $type;
     private $firstName;
     private $lastName;
+    private $photo;
     private $idHome;
 
     public function set_id($id) {
@@ -20,6 +23,29 @@ class User {
 
     public function get_id() {
         return $this->id;
+    }
+
+    public function set_photo($photo) {
+        $this->photo = $photo;
+    }
+
+    public function get_photo() {
+        return $this->photo;
+    }
+
+    public function set_email($email) {
+        $this->email = $email;
+    }
+
+    public function get_email() {
+        return $this->email;
+    }
+    public function set_password($password) {
+        $this->password = $password;
+    }
+
+    public function get_password() {
+        return $this->password;
     }
 
     public function set_type($type) {
@@ -154,11 +180,13 @@ class User {
     Devemos chamar a função da seguinte forma:
         $user = User::create(3, "João", "Brito", 0);
     */
-    public static function create(int $type, string $firstName, string $lastName, int $idHome) {
+    public static function create(string $email, string $password, int $type, string $firstName, string $lastName,string $photo) {
         $conn = get_connection();
+        $md5 = md5($password);
+        
+        $sql = "INSERT INTO users (email, password, type, firstName, lastName, photo) VALUES ('$email','$md5',$type, '$firstName', '$lastName', '$photo')";
 
-        if ($idHome == 0) $sql = "INSERT INTO users (type, firstName, lastName) VALUES ('$type', '$firstName', '$lastName')";
-        else $sql = "INSERT INTO users (type, firstName, lastName, idHome) VALUES ('$type', '$firstName', '$lastName', '$idHome')";
+        
 
         if ($conn->query($sql) === TRUE) {
             $conn->close();
@@ -173,37 +201,20 @@ class User {
         }
     }
 
-    public function delete()  {
+    public static function update($fName,$lName,  $email, $password,  $url, $id) {
         $conn = get_connection();
-        $id = $this->get_id();
 
-        $sql = "DELETE * FROM users WHERE id = $id";
+        $sql = "UPDATE users SET firstName = '$fName', lastName = '$lName',email = '$email', photo = '$url', password = '$password'  WHERE id = '$id'";
+
 
         if ($conn->query($sql) === TRUE) {
             $conn->close();
-            return true;
+            return $sql;
         } else {
             $conn->close();
             return false;
         }
     }
-
-    public function update(int $type, string $firstName, string $lastName, int $idHome) {
-        $id = $this->get_id();
-        $conn = get_connection();
-
-        $sql = "UPDATE users SET type = $type, firstName = $firstName, lastName = $lastName, idHome = $idHome WHERE id = $id";
-
-        if ($conn->query($sql) === TRUE) {
-            $conn->close();
-            return true;
-        } else {
-            $conn->close();
-            return false;
-        }
-    }
-
-
 
     private function get_last_inserted(){
         $conn = get_connection();
@@ -228,9 +239,12 @@ class User {
         $user = new User();
 
         $user->set_id($user_row["id"]);
+        $user->set_email($user_row["email"]);
+        $user->set_password($user_row["password"]);
         $user->set_type($user_row["type"]);
         $user->set_first_name($user_row["firstName"]);
         $user->set_last_name($user_row["lastName"]);
+        $user->set_photo($user_row["photo"]);
         $user->set_id_home($user_row["idHome"]);
 
         return $user;

@@ -38,26 +38,15 @@ CREATE TABLE `brand` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `districts`
---
-
-CREATE TABLE `districts` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Estrutura da tabela `homes`
 --
 
 CREATE TABLE `homes` (
   `id` int NOT NULL,
-  `idDistrict` int NOT NULL,
+  `name` varchar(255) NOT NULL,
   `address` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `description` varchar(255) NOT NULL,
-  `image_link` varchar(255) NOT NULL
+  `photo` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 
@@ -147,17 +136,10 @@ ALTER TABLE `brand`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `districts`
---
-ALTER TABLE `districts`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Índices para tabela `homes`
 --
 ALTER TABLE `homes`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idDistrict` (`idDistrict`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Índices para tabela `intake`
@@ -206,12 +188,6 @@ ALTER TABLE `brand`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `districts`
---
-ALTER TABLE `districts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de tabela `homes`
 --
 ALTER TABLE `homes`
@@ -247,15 +223,6 @@ ALTER TABLE `medicinemedication`
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
---
--- Restrições para despejos de tabelas
---
-
---
--- Limitadores para a tabela `homes`
---
-ALTER TABLE `homes`
-  ADD CONSTRAINT `idDistrict` FOREIGN KEY (`idDistrict`) REFERENCES `districts` (`id`);
 
 --
 -- Limitadores para a tabela `medication`

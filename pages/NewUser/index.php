@@ -1,3 +1,30 @@
+<?php
+require_once(dirname(__FILE__, 3) . "/src/user/User.php");
+require_once(dirname(__FILE__, 3) . "/src/database/connection.php");
+
+session_start();
+$error = "";
+
+$user = User::get_by_id($_SESSION['id']);
+
+
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+  $fName = $_POST['first-name'];
+  $lName = $_POST['last-name'];
+  $email = $_POST['email'];
+  $password = $_POST['password'];
+  $url = $_POST['url'];
+  $type = $_POST['type'];
+
+ 
+  User::create($email, $password, $type, $fName, $lName,  $url);
+
+
+ 
+//  header("location: ../ManageUsers/index.php");
+ 
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,7 +70,7 @@
             <a href="../Profile" class="">
 
                         <div class="flex-shrink-0 h-10 w-10">
-                          <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="">
+                          <img class="h-10 w-10 rounded-full" src="<?= $user->get_photo(); ?>" alt="">
                         </div>
 
             </a>
@@ -109,6 +136,17 @@
                   required
                   id="url" 
                   name="url"
+                  autocomplete="off"
+                />
+            </div>
+
+            <div class="input-block">
+              <label for="url">Tipo</label>
+                <input 
+                  type="number"
+                  required
+                  id="type" 
+                  name="type"
                   autocomplete="off"
                 />
             </div>

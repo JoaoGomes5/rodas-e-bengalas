@@ -1,3 +1,29 @@
+<?php
+require_once(dirname(__FILE__, 3) . "/src/user/User.php");
+require_once(dirname(__FILE__, 3) . "/src/database/connection.php");
+
+session_start();
+
+$id = $_SESSION['id'];
+
+$user = User::get_by_id($id);
+
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+  $fName = $_POST['first-name'];
+  $lName = $_POST['last-name'];
+  $email = $_POST['email'];
+  $current = $_POST['current'];
+  $new = $_POST['new'];
+  $url = $_POST['url'];
+
+ 
+ 
+  $updatedUser = User::update($fName, $lName, $email, $new, $url , $id);
+  
+  $user = User::get_by_id($id);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,20 +53,23 @@
   <div class="header-container fixed w-full z-10 top-0">
     <header class="header">
       
-      <a href="../AdminDashboard" class="">
+      <a href="<?php 
+          if($user->get_type() == 0){
+            echo "../AdminDashboard";
+          }
+
+          if($user->get_type() == 1){
+            echo "../HomeAdminDashboard";
+          }
+      ?>" class="">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="#FFF">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                         </svg>
       </a>
 
                 <div class="relative inline-block">
-                  <img class="h-50 w-50 rounded-full profile" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="">
-                  <a class="absolute bottom-0 right-0 inline-block w-20 h-20 bg-blue-400 border-2 border-white rounded-full picker">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="#FFF">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                  </a>
+                  <img class="rounded-full profile object-fill" src="<?= $user->get_photo(); ?>" alt="">
+                  
                 </div>
         
       
@@ -49,7 +78,7 @@
   </div>
 
   <div class="content">
-  <form class="create-orphanage-form" method="POST">
+  <form action="" class="create-orphanage-form" method="post">
           <fieldset>
             <legend>Meus dados</legend>
             <div class="input-block">
@@ -58,6 +87,7 @@
                   required
                   id="first-name" 
                   name="first-name"
+                  value="<?= $user->get_first_name(); ?>"
                 />
             </div>
 
@@ -68,6 +98,7 @@
                   id="last-name" 
                   name="last-name"
                   autocomplete="off"
+                  value="<?= $user->get_last_name(); ?>"
                 />
             </div>
 
@@ -79,6 +110,7 @@
                   id="email" 
                   name="email"
                   autocomplete="off"
+                  value="<?= $user->get_email(); ?>"
                 />
             </div>
 
@@ -86,7 +118,6 @@
               <label for="current">Password atual</label>
                 <input 
                   type="password"
-                  required
                   id="current" 
                   name="current"
                   autocomplete="off"
@@ -97,10 +128,20 @@
             <label for="new">Password nova</label>
                 <input 
                   type="password"
-                  required
                   id="new" 
                   name="new"
                   autocomplete="off"
+                />
+            </div>
+
+            <div class="input-block">
+            <label for="new">Url da foto</label>
+                <input 
+                  type=""
+                  id="url" 
+                  name="url"
+                  autocomplete="off"
+                  value="<?= $user->get_photo(); ?>"
                 />
             </div>
 
@@ -159,9 +200,9 @@
           </div>
         </div>
         <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-          <button id="yes" type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm">
+          <a href="" id="yes" type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm">
             Sim
-          </button>
+</a>
           <button id="no" type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
             Não
           </button>

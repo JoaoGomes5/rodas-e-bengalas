@@ -1,3 +1,29 @@
+<?php
+require_once(dirname(__FILE__, 3) . "/src/user/User.php");
+require_once(dirname(__FILE__, 3) . "/src/database/connection.php");
+
+session_start();
+
+$id = $_GET['id'];
+
+$user = User::get_by_id($id);
+
+
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+  $fName = $_POST['first-name'];
+  $lName = $_POST['last-name'];
+  $email = $_POST['email'];
+  $new = $_POST['password'];
+  $url = $_POST['url'];
+
+
+  $updatedUser = User::update($fName, $lName, $email, $new, $url , $id);
+ 
+ header("location: ../ManageUsers/index.php");
+ 
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,7 +69,7 @@
             <a href="../Profile" class="">
 
                         <div class="flex-shrink-0 h-10 w-10">
-                          <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="">
+                          <img class="h-10 w-10 rounded-full" src="<?= $_SESSION['photo']; ?>" alt="">
                         </div>
 
             </a>
@@ -59,7 +85,7 @@
 <div class="content">
   
   
-    <form class="create-orphanage-form" method="POST">
+    <form action="" class="create-orphanage-form" method="post">
           <fieldset>
             <div>
               <legend>Editar utente</legend>
@@ -70,6 +96,7 @@
                   required
                   id="first-name" 
                   name="first-name"
+                  value="<?= $user->get_first_name(); ?>"
                 />
             </div>
 
@@ -80,6 +107,7 @@
                   id="last-name" 
                   name="last-name"
                   autocomplete="off"
+                  value="<?= $user->get_last_name(); ?>"
                 />
             </div>
 
@@ -91,6 +119,7 @@
                   id="email" 
                   name="email"
                   autocomplete="off"
+                  value="<?= $user->get_email(); ?>"
                 />
             </div>
 
@@ -98,10 +127,10 @@
               <label for="password">Password</label>
                 <input 
                   type="password"
-                  required
                   id="password" 
                   name="password"
                   autocomplete="off"
+                  value="<?= $user->get_password(); ?>"
                 />
             </div>
 
@@ -112,6 +141,7 @@
                   id="url" 
                   name="url"
                   autocomplete="off"
+                  value="<?= $user->get_photo(); ?>"
                 />
             </div>
 

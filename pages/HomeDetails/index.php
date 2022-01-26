@@ -1,3 +1,15 @@
+<?php
+require_once(dirname(__FILE__, 3) . "/src/home/Home.php");
+require_once(dirname(__FILE__, 3) . "/src/database/connection.php");
+
+session_start();
+
+$id = $_GET['id'];
+
+$home = Home::get_by_id($id);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,7 +58,7 @@
       
            
 
-            <a href="../EditHome" id="edit-btn" class="bg-yellow-500 hover:bg-yellow-600 py-3 px-3    rounded inline-flex items-center mr-2">
+            <a href="../EditHome?id=<?= $id ?>" id="edit-btn" class="bg-yellow-500 hover:bg-yellow-600 py-3 px-3    rounded inline-flex items-center mr-2">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="#FFF">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
               </svg>
@@ -67,7 +79,7 @@
 <div class="content">
     <div class="image-section w-screen">
       
-          <img src="https://images.unsplash.com/photo-1641725814339-58f7c1fd40e6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80" alt="" class="object-cover w-full h-48">
+          <img src="<?=  $home->get_photo() ;?>" alt="" class="object-cover w-full h-48">
           
     </div>
 
@@ -75,10 +87,13 @@
 
       <div class="home-info">
 
-        <h1>Lar de Espinho</h1>
+        <h1><?=  $home->get_name() ;?></h1>
 
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+        <?=  $home->get_description() ;?>
+        </p>
+        <p>
+        <?=  $home->get_address() ;?>
         </p>
       </div>
 
@@ -280,9 +295,9 @@
         </div>
       </div>
       <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-        <button id="yes" type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
+        <a href="../../src/home/delete.php?id=<?=  $home->get_id() ;?>" id="yes" type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
           Sim
-        </button>
+      </a>
         <button id="no" type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
           Não
         </button>

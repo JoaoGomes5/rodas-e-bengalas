@@ -38,11 +38,6 @@ header {
   height: 100px;
 }
 
-.header-container img {
-  margin-left: 40vw;
-  margin-top: 100px;
-}
-
 .content {
   display: flex;
   justify-content: center;

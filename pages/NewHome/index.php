@@ -1,3 +1,29 @@
+<?php
+require_once(dirname(__FILE__, 3) . "/src/home/Home.php");
+require_once(dirname(__FILE__, 3) . "/src/database/connection.php");
+
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+  $name = $_POST['name'];
+  $description = $_POST['description'];
+  $photo = $_POST['url'];
+  $address = $_POST['address'];
+
+ try {
+  $home = Home::create($name, $address, $description, $photo);
+
+ } catch (\Throwable $th) {
+  header("location: index.php?err=$th");
+ }
+  
+
+  
+  if ($home != null) { // Os dados inseridos são válidos
+    header("location: ../AdminDashboard/index.php");
+  } else { // Não existe utilizador com os dados inseridos
+  
+  }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,7 +85,7 @@
 <div class="content">
   
   
-<form class="create-orphanage-form" method="POST">
+<form action="" class="create-orphanage-form" method="post">
           <fieldset>
             <legend>Criar novo lar</legend>
             <div class="input-block">

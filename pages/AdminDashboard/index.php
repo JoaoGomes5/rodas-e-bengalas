@@ -1,3 +1,12 @@
+<?php 
+require_once(dirname(__FILE__, 3) . "/src/home/Home.php");
+require_once(dirname(__FILE__, 3) . "/src/database/connection.php");
+
+session_start();
+
+$homes = Home::get_all();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,12 +44,12 @@
             <a href="../Profile" class="">
 
                         <div class="flex-shrink-0 h-10 w-10">
-                          <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="">
+                          <img class="h-10 w-10 rounded-full" src="<?= $_SESSION['photo'];?>" alt="">
                         </div>
 
             </a>
 
-            <a href="../../src/session/logout.php" class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-10 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white ">
+            <a href="../../src/session/logout.php" class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-10 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-red-500 hover:bg-red-600">
               Sair
             </a>
           </div>
@@ -65,68 +74,27 @@
         
 
           <ul >
+
+          <?php foreach($homes as $home) : ?>
             <li class="home">
-              <a href="../HomeDetails?id=0">
+              <a href="../HomeDetails?id=<?=  $home->get_id() ;?>">
                   <div class="home-info">
-                      <h1>Lar de Espinho</h1>
+                      <h1><?=  $home->get_name() ;?></h1>
 
                       <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                      <?=  $home->get_description() ;?>
                       </p>
                   </div>
-                  <div>
+                  <div class="image">
 
-                    <img src="../../assets/images/sea.png" alt="">
+                    <img src="<?=  $home->get_photo() ;?>" alt="">
                   </div>
               </a>
             </li>
 
-            <li class="home">
-              <a href="../HomeDetails?id=0">
-                  <div class="home-info">
-                      <h1>Lar de Espinho</h1>
+          <?php endforeach ?>
 
-                      <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                      </p>
-                  </div>
-                  <div>
-
-                    <img src="../../assets/images/sea.png" alt="">
-                  </div>
-              </a>
-            </li>
-
-            <li class="home">
-              <a href="../HomeDetails?id=0">
-                  <div class="home-info">
-                      <h1>Lar de Espinho</h1>
-
-                      <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                      </p>
-                  </div>
-                  <div>
-
-                    <img src="../../assets/images/sea.png" alt="">
-                  </div>
-              </a>
-            </li>
-
-            <li class="home">
-              <a href="../HomeDetails?id=0">
-                  <div class="home-info">
-                      <h1>Lar de Espinho</h1>
-
-                      <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                      </p>
-                  </div>
-                  <div>
-
-                    <img src="../../assets/images/sea.png" alt="">
-                  </div>
-              </a>
+         
             
 
           </ul>

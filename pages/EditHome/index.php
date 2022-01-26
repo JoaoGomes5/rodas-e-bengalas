@@ -1,3 +1,27 @@
+<?php
+require_once(dirname(__FILE__, 3) . "/src/home/Home.php");
+require_once(dirname(__FILE__, 3) . "/src/database/connection.php");
+
+session_start();
+
+$id = $_GET['id'];
+
+$home = Home::get_by_id($id);
+
+
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+  $name = $_POST['name'];
+  $description = $_POST['description'];
+  $photo = $_POST['url'];
+  $address = $_POST['address'];
+
+ 
+ Home::update($name, $address, $description, $photo, $id);
+ header("location: ../AdminDashboard/index.php");
+ 
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -68,6 +92,7 @@
                   required
                   id="name" 
                   name="name"
+                  value="<?= $home->get_name(); ?>"
                 />
             </div>
 
@@ -77,7 +102,8 @@
                   required
                   id="address" 
                   name="address"
-                  maxLength={300} ></textarea>
+                  maxLength={300} 
+                  ><?= $home->get_address(); ?></textarea>
             </div>
 
             <div class="input-block">
@@ -86,6 +112,7 @@
                   required
                   id="url" 
                   name="url"
+                  value="<?= $home->get_photo(); ?>"
                 />
             </div>
 
@@ -96,7 +123,7 @@
                   name="description"
                   maxLength={300} 
                   required
-                  ></textarea>
+                  ><?= $home->get_description(); ?></textarea>
             </div>
 
            
