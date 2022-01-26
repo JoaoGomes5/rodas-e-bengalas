@@ -26,18 +26,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `brand`
---
-
-CREATE TABLE `brand` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `description` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Estrutura da tabela `homes`
 --
 
@@ -49,17 +37,6 @@ CREATE TABLE `homes` (
   `photo` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `intake`
---
-
-CREATE TABLE `intake` (
-  `id` int(11) NOT NULL,
-  `description` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -86,8 +63,8 @@ CREATE TABLE `medicine` (
   `quantity` int(11) NOT NULL,
   `activeIngredient` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `idBrand` int(11) NOT NULL,
-  `idIntake` int(11) NOT NULL
+  `brand` varchar(255) NOT NULL,
+  `intake` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -130,21 +107,9 @@ CREATE TABLE `users` (
 --
 
 --
--- Índices para tabela `brand`
---
-ALTER TABLE `brand`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Índices para tabela `homes`
 --
 ALTER TABLE `homes`
-  ADD PRIMARY KEY (`id`);
-
---
--- Índices para tabela `intake`
---
-ALTER TABLE `intake`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -159,9 +124,7 @@ ALTER TABLE `medication`
 -- Índices para tabela `medicine`
 --
 ALTER TABLE `medicine`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idBrand` (`idBrand`),
-  ADD KEY `idIntake` (`idIntake`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Índices para tabela `medicinemedication`
@@ -182,21 +145,9 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT de tabela `brand`
---
-ALTER TABLE `brand`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de tabela `homes`
 --
 ALTER TABLE `homes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de tabela `intake`
---
-ALTER TABLE `intake`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -230,13 +181,6 @@ ALTER TABLE `users`
 ALTER TABLE `medication`
   ADD CONSTRAINT `idClient` FOREIGN KEY (`idClient`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `idTechnician` FOREIGN KEY (`idTechnician`) REFERENCES `users` (`id`);
-
---
--- Limitadores para a tabela `medicine`
---
-ALTER TABLE `medicine`
-  ADD CONSTRAINT `idBrand` FOREIGN KEY (`idBrand`) REFERENCES `brand` (`id`),
-  ADD CONSTRAINT `idIntake` FOREIGN KEY (`idIntake`) REFERENCES `intake` (`id`);
 
 --
 -- Limitadores para a tabela `medicinemedication`
