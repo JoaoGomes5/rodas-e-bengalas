@@ -8,7 +8,7 @@ function get_connection(){
      $mysql_password = $password;
      $database = "rodasbengalas";
 
-    $conn = mysqli_connect($server, $mysql_user, $mysql_password, $database);
+    $conn = mysqli_connect($server, $mysql_user, "", $database);
     
     if($conn) {
          return $conn;

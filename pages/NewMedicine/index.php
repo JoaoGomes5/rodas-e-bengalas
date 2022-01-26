@@ -1,3 +1,24 @@
+<?php
+require_once(dirname(__FILE__, 3) . "/src/medicine/Medicine.php");
+require_once(dirname(__FILE__, 3) . "/src/database/connection.php");
+
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+  $name = $_POST['name'];
+  $activeIngredient = $_POST['activeIngredient'];
+  $brand = $_POST['brand'];
+  $intake = $_POST['intake'];
+  $stock = $_POST['stock'];
+
+  $medicine = Medicine::create($stock, $activeIngredient, $name, $brand, $intake);
+
+  if ($medicine != false) {
+    header("location: ../ManageMedicine/index.php?suc=1"); // sucesso
+  } else {
+    header("location: index.php?err=1"); // erro
+  }
+  
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
