@@ -8,7 +8,7 @@
 
     $user = User::get_by_id($id);
 
-    $users = User::get_all();
+    $users = User::get_by_type(0);
 ?>
 
 <!DOCTYPE html>

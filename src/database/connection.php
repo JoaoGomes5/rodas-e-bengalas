@@ -1,7 +1,8 @@
 <?php
 
 function get_connection(){
-     $password = "Phpmyadmin1234!";
+     $password = "mysql";
+     // $password = "Phpmyadmin1234!"; 
      $Jpassword = "mysql";
      $server = "localhost"; //serverName\instanceName
      $mysql_user = "root";

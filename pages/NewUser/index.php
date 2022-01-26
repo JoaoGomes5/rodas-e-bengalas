@@ -14,14 +14,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
   $email = $_POST['email'];
   $password = $_POST['password'];
   $url = $_POST['url'];
-  $type = $_POST['type'];
+  $type = 0;
 
- 
   User::create($email, $password, $type, $fName, $lName,  $url);
 
-
- 
-//  header("location: ../ManageUsers/index.php");
+  header("location: ../ManageUsers/index.php");
  
 }
 ?>
@@ -139,18 +136,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                   autocomplete="off"
                 />
             </div>
-
-            <div class="input-block">
-              <label for="url">Tipo</label>
-                <input 
-                  type="number"
-                  required
-                  id="type" 
-                  name="type"
-                  autocomplete="off"
-                />
-            </div>
-
            
           </fieldset>
 

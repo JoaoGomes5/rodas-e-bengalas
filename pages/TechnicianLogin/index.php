@@ -1,3 +1,35 @@
+
+<?php
+require_once(dirname(__FILE__, 3) . "/src/user/User.php");
+require_once(dirname(__FILE__, 3) . "/src/database/connection.php");
+
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+  $email = $_POST['email'];
+  $password = md5($_POST['password']); 
+
+  $user = User::get_by_email_and_password($email, $password);
+  
+  if ($user != null) { // Os dados inseridos são válidos
+    if ($user->get_type() == 2) {
+      session_start();
+      $_SESSION['id'] = $user->get_id();
+      $_SESSION['email'] = $user->get_email();
+      $_SESSION['password'] = $user->get_password();
+      $_SESSION['photo'] = $user->get_photo();
+      $_SESSION['fName'] = $user->get_first_name();
+      $_SESSION['lName'] = $user->get_last_name();
+      $_SESSION['lName'] = $user->get_last_name();
+      
+      header("location: ../TechnicianDashboard/index.php");
+    } else {
+      header("location: index.php?err=2"); // Existe utilizador mas não tem permissões de Administrador
+    }
+  } else { // Não existe utilizador com os dados inseridos
+    header("location: index.php?err=1");
+  }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

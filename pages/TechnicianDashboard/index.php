@@ -1,3 +1,16 @@
+<?php
+  require_once(dirname(__FILE__, 3) . "/src/user/User.php");
+  require_once(dirname(__FILE__, 3) . "/src/database/connection.php");
+
+  session_start();
+  
+  $id = $_SESSION['id'];
+
+    $user = User::get_by_id($id);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,11 +37,7 @@
   <div class="header-container fixed w-full z-10 top-0">
   <header class="header">
       <div class="flex justify-between items-center py-6 md:justify-start md:space-x-10">
-        <a href="../HomeAdminDashboard" class="bg-gray-400 hover:bg-gray-500 py-3    px-3 rounded inline-flex items-center ">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="#FFF">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                      </svg>
-                </a>
+        
           <div class="flex justify-start lg:w-0 lg:flex-1">
 
             <a href="#">
@@ -41,7 +50,7 @@
             <a href="../Profile" class="">
 
                         <div class="flex-shrink-0 h-10 w-10">
-                          <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="">
+                          <img class="h-10 w-10 rounded-full" src="<?= $user->get_photo(); ?>" alt="">
                         </div>
 
             </a>

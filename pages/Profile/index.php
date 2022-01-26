@@ -61,13 +61,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
           if($user->get_type() == 1){
             echo "../HomeAdminDashboard";
           }
+
+          if($user->get_type() == 2){
+            echo "../TechnicianDashboard";
+          }
       ?>" class="">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="#FFF">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                         </svg>
       </a>
 
-                <div class="relative inline-block">
+                <div class="relative inline-block image">
                   <img class="rounded-full profile object-fill" src="<?= $user->get_photo(); ?>" alt="">
                   
                 </div>

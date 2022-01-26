@@ -180,11 +180,11 @@ class User {
     Devemos chamar a função da seguinte forma:
         $user = User::create(3, "João", "Brito", 0);
     */
-    public static function create(string $email, string $password, int $type, string $firstName, string $lastName,string $photo) {
+    public static function create(string $email, string $password, int $type, string $firstName, string $lastName,string $photo, $idHome) {
         $conn = get_connection();
         $md5 = md5($password);
         
-        $sql = "INSERT INTO users (email, password, type, firstName, lastName, photo) VALUES ('$email','$md5',$type, '$firstName', '$lastName', '$photo')";
+        $sql = "INSERT INTO users (email, password, type, firstName, lastName, photo) VALUES ('$email','$md5',$type, '$firstName', '$lastName', '$photo', $idHome)";
 
         
 
@@ -250,31 +250,7 @@ class User {
         return $user;
     }
 
-    public static function gets_by_type(int $type){
-        $conn = get_connection();
-
-        $sql = "SELECT * FROM users WHERE type = $type";
-        $result = $conn->query($sql);
-
-        if ($result->num_rows > 0) {
-            $users_array[] = new User();
-
-            while($row = $result->fetch_assoc()) {
-                $user = new User();
-                $user = $user->row_to_object($row);
-                
-                array_push($users_array, $user);
-            }
-
-            array_shift($users_array);
-            $conn->close();
-            return $users_array;
-        } else {
-            $conn->close();
-            return null;
-        }
-    }
-
+   
     public static function gets_by_home(int $idHome){
         $conn = get_connection();
 
@@ -324,7 +300,30 @@ class User {
             return null;
         }
     }
+    public static function get_by_type($type){
+        $conn = get_connection();
 
+        $sql = "SELECT * FROM users WHERE type = $type";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            $users[] = new User();
+
+            while($row = $result->fetch_assoc()) {
+                $user = new User();
+                $user = $user->row_to_object($row);
+                
+                array_push($users, $user);
+            }
+
+            array_shift($users);
+            $conn->close();
+            return $users;
+        } else {
+            $conn->close();
+            return null;
+        }
+    }
     public static function get_all(){
         $conn = get_connection();
 

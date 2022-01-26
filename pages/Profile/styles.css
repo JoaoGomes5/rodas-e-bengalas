@@ -197,3 +197,8 @@ legend {
 .profile {
   margin-top: 200px !important;
 }
+
+.image {
+  display: flex;
+  align-items: center;
+}

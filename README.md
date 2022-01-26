@@ -20,7 +20,7 @@
   - As an **home admin** i can **import data from a csv file**
     - **clients**
     - **technicians**
-    - **medicines**
+    - **medicines** 
   - As an **home admin** i can **manage clients** (CRUD) ✅
   - As an **home admin** i can **manage technicians** (CRUD) ✅
   - As an **home admin** i can **manage medicines** (CRUD) ✅
