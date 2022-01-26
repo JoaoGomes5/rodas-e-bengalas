@@ -1,15 +1,13 @@
 <?php
 require_once(dirname(__FILE__, 3) . "/src/database/connection.php");
-require_once(dirname(__FILE__, 3) . "/src/brand/Brand.php");
-require_once(dirname(__FILE__, 3) . "/src/intake/Intake.php");
 
 class Medicine {
     private $id;
     private $quantity;
     private $activeIngredient;
     private $name;
-    private Brand $brand;
-    private Intake $intake;
+    private $brand;
+    private $intake;
 
     public function set_id($id) {
         $this->id = $id;
@@ -82,10 +80,9 @@ class Medicine {
     public function set_brand($brand) {
         $this->brand = $brand;
         $id = $this->get_id();
-        $idBrand = $brand->get_id();
         $conn = get_connection();
 
-        $sql = "UPDATE medicine SET idBrand = $idBrand WHERE id = $id";
+        $sql = "UPDATE medicine SET brand = $brand WHERE id = $id";
 
         if ($conn->query($sql) === TRUE) {
             $conn->close();
@@ -103,10 +100,9 @@ class Medicine {
     public function set_intake($intake) {
         $this->intake = $intake;
         $id = $this->get_id();
-        $idIntake = $intake->get_id();
         $conn = get_connection();
 
-        $sql = "UPDATE medicine SET idIntake = $idIntake WHERE id = $id";
+        $sql = "UPDATE medicine SET intake = $intake WHERE id = $id";
 
         if ($conn->query($sql) === TRUE) {
             $conn->close();
@@ -122,11 +118,9 @@ class Medicine {
     }
 
     public static function create($quantity, $activeIngredient, $name, $brand, $intake){
-        $idBrand = $brand->get_id();
-        $idIntake = $intake->get_id();
         $conn = get_connection();
 
-        $sql = "INSERT INTO medicine (quantity, activeIngredient, name, idBrand, idIntake) VALUES ('$quantity', '$activeIngredient', '$name', '$idBrand', '$idIntake')";
+        $sql = "INSERT INTO medicine (quantity, activeIngredient, name, brand, intake) VALUES ('$quantity', '$activeIngredient', '$name', '$brand', '$intake')";
 
         if ($conn->query($sql) === TRUE) {
             $conn->close();
@@ -147,7 +141,7 @@ class Medicine {
         $idIntake = $intake->get_id();
         $conn = get_connection();
 
-        $sql = "UPDATE medicine SET quantity = $quantity, activeIngredient = $activeIngredient, name = $name, idBrand = $idBrand, idIntake = $idIntake WHERE id = $id";
+        $sql = "UPDATE medicine SET quantity = $quantity, activeIngredient = $activeIngredient, name = $name, brand = $brand, intake = $intake WHERE id = $id";
 
         if ($conn->query($sql) === TRUE) {
             $conn->close();
@@ -214,15 +208,13 @@ class Medicine {
 
     private function row_to_object($medicine_row) {
         $medicine = new Medicine();
-        $brand = Brand::get_by_id($medicine_row["idBrand"]);
-        $intake = Intake::get_by_id($medicine_row["idIntake"]);
 
         $medicine->set_id($medicine_row["id"]);
         $medicine->set_quantity($medicine_row["quantity"]);
         $medicine->set_active_ingredient($medicine_row["activeIngredient"]);
         $medicine->set_name($medicine_row["name"]);
-        $medicine->set_brand($brand);
-        $medicine->set_intake($intake);
+        $medicine->set_brand($medicine_row["brand"]);
+        $medicine->set_intake($medicine_row["intake"]);
 
         return $medicine;
     }
@@ -235,7 +227,7 @@ class Medicine {
         $brand = $this->get_brand();
         $intake = $this->get_intake();
 
-        return "[ id = '$id', quantity = '$quantity', activeIngredient = '$activeIngredient', name = '$name', brand = '$brand->to_string()', intake = '$intake->to_string()' ]";
+        return "[ id = '$id', quantity = '$quantity', activeIngredient = '$activeIngredient', name = '$name', brand = '$brand', intake = '$intake' ]";
     }
 }
 
