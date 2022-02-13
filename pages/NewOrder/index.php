@@ -61,59 +61,38 @@
   
     <form class="create-orphanage-form" method="POST">
           <fieldset>
-            <legend>Registar novo utente</legend>
+            <legend>Nova Encomenda</legend>
             <div class="input-block">
-              <label for="first-name">Primeiro nome</label>
+              <label for="medicine_reference">Referência do Medicamento</label>
                 <input 
                   required
-                  id="first-name" 
-                  name="first-name"
+                  id="medicine_reference" 
+                  name="medicine_reference"
                 />
             </div>
 
             <div class="input-block">
-              <label for="last-name">Ultimo nome</label>
+              <label for="home_id">Id do Lar</label>
                 <input 
                   required
-                  id="last-name" 
-                  name="last-name"
+                  id="home_id" 
+                  name="home_id"
                   autocomplete="off"
                 />
             </div>
 
             <div class="input-block">
-              <label for="email">E-Mail</label>
+              <label for="quantity">Quantidade</label>
               <input 
-                  type="email"
+                  type="number"
                   required
-                  id="email" 
-                  name="email"
+                  id="quantity" 
+                  name="quantity"
                   autocomplete="off"
                 />
             </div>
 
-            <div class="input-block">
-              <label for="password">Password</label>
-                <input 
-                  type="password"
-                  required
-                  id="password" 
-                  name="password"
-                  autocomplete="off"
-                />
-            </div>
-
-            <div class="input-block">
-              <label for="url">URL da foto</label>
-                <input 
-                  required
-                  id="url" 
-                  name="url"
-                  autocomplete="off"
-                />
-            </div>
             
-           
           </fieldset>
 
         
