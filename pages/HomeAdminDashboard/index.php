@@ -102,6 +102,14 @@
             </a>
           </div>
 
+          <div class="option">
+            <a href="../NewOrder">
+              <img src="../../assets/images/pills-bottle.png" alt="">
+
+              <p>Encomendar Medicamentos</p>
+            </a>
+          </div>
+
         </div>
 
        

@@ -20,7 +20,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     
     default:
       header("location: index.php?err=1"); // Deve selecionar uma opção do select de resultado de teste covid
-      break;
+      exit;
   }
 
   $user_info = array(
@@ -102,7 +102,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 <div class="content">
 
 <?php
-  if (isset($_GET["err"]) || isset($_GET["succ"])) {
+  if (isset($_GET["err"])) {
     if ($_GET["err"] == 1) {
       echo (create_error_modal("Selecione um restultado de teste"));
     }
