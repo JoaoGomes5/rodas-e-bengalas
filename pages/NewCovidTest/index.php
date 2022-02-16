@@ -1,5 +1,6 @@
 <?php
 require_once(dirname(__FILE__, 3) . "/src/api/request_api.php");
+require_once(dirname(__FILE__, 3) . "/src/modal/Modal.php");
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
   $name = $_POST['name'];
@@ -99,8 +100,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 </div>
 
 <div class="content">
-  
-  
+
+<?php
+  if (isset($_GET["err"]) || isset($_GET["succ"])) {
+    if ($_GET["err"] == 1) {
+      echo (create_error_modal("Selecione um restultado de teste"));
+    } else if ($_GET["succ"] == 1) {
+      echo (create_success_modal("Teste registado"));
+    }
+    
+  }
+?>
+
     <form class="create-orphanage-form" method="POST" action="#">
           <fieldset>
             <legend>Informação do Utente</legend>

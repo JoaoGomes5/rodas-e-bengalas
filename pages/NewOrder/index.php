@@ -1,5 +1,6 @@
 <?php
 require_once(dirname(__FILE__, 3) . "/src/api/request_api.php");
+require_once(dirname(__FILE__, 3) . "/src/modal/Modal.php");
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
   $medicine_reference = $_POST['medicine_reference'];
@@ -17,8 +18,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
   $response = requestApi("POST", "http://localhost:3333/orders", $order);
   $response = json_decode($response, true);
 
-  if ($response["error"] != null) header("location: index.php?err=1"); // Não há stock suficiente
-  
+  if ($response["error"] != null) header("location: index.php?err=1?msg=" . $response["error"]);
+
   else header("location: index.php?succ=1"); // Encomenda efetuada
   
 }
@@ -83,6 +84,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <div class="content">
   
+<?php
+  if (isset($_GET["err"]) || isset($_GET["succ"])) {
+    if ($_GET["err"] == 1) {
+      echo (create_error_modal($_GET["msg"]));
+    } else if ($_GET["succ"] == 1) {
+      echo (create_success_modal("Encomenda realizada"));
+    }
+  }
+?>
   
     <form class="create-orphanage-form" method="POST">
           <fieldset>
