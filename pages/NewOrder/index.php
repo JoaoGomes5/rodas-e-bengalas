@@ -18,7 +18,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
   $response = requestApi("POST", "http://localhost:3333/orders", $order);
   $response = json_decode($response, true);
 
-  if ($response["error"] != null) header("location: index.php?err=1?msg=" . $response["error"]);
+  if ($response["error"] != null) header("location: index.php?err=1&msg=" . $response["error"]);
 
   else header("location: index.php?succ=1"); // Encomenda efetuada
   
@@ -85,10 +85,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 <div class="content">
   
 <?php
-  if (isset($_GET["err"]) || isset($_GET["succ"])) {
+  if (isset($_GET["err"])) {
     if ($_GET["err"] == 1) {
       echo (create_error_modal($_GET["msg"]));
-    } else if ($_GET["succ"] == 1) {
+    }
+  }
+  else if (isset($_GET["succ"])) {
+    if ($_GET["succ"] == 1) {
       echo (create_success_modal("Encomenda realizada"));
     }
   }
