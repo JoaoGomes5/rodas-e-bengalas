@@ -1,3 +1,45 @@
+<?php
+require_once(dirname(__FILE__, 3) . "/src/api/request_api.php");
+
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+  $name = $_POST['name'];
+  $nif = $_POST['nif'];
+  $email = $_POST['email'];
+  $phone = $_POST['phone'];
+  $resultado = $_POST['resultado'];
+  
+  switch ($resultado) {
+    case "negativo":
+      $resultado = false;
+      break;
+
+    case "positivo":
+      $resultado = true;
+      break;
+    
+    default:
+      header("location: index.php?err=1"); // Deve selecionar uma opção do select de resultado de teste covid
+      break;
+  }
+
+  $user_info = array(
+    "nif" => $nif,
+    "name" => $name,
+    "email" => $email,
+    "phone" => $phone
+  );
+
+  $user_test = array(
+    "user" => $user_info,
+    "result" => $resultado
+  );
+
+  $user_test = json_encode($user_test);
+
+  $response = requestApi("POST", "http://localhost:3333/tests", $user_test);
+  header("location: index.php?succ=1");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,7 +101,7 @@
 <div class="content">
   
   
-    <form class="create-orphanage-form" method="POST">
+    <form class="create-orphanage-form" method="POST" action="#">
           <fieldset>
             <legend>Informação do Utente</legend>
             <div class="input-block">
@@ -109,7 +151,7 @@
               <label for="result">Resultado</label>
                   <div class="flex justify-center">
                   <div class="mb-3 xl:w-96">
-                    <select class="
+                    <select name="resultado" class="
                     w-full
                       form-select
                       appearance-none
@@ -126,9 +168,9 @@
                       ease-in-out
                       m-0
                       focus:text-gray-700 focus:bg-white focus:border-green-600 focus:outline-none" aria-label="Default select example">
-                        <option selected>Indique o resultado do teste</option>
-                        <option id="positivo" name="positivo" value="positivo">Positivo</option>
-                        <option id="negativo" name="negativo" value="negativo">Negativo</option>
+                        <option id="default" value="default" selected>Indique o resultado do teste</option>
+                        <option id="positivo" value="positivo">Positivo</option>
+                        <option id="negativo" value="negativo">Negativo</option>
                     </select>
                   </div>
                 </div>

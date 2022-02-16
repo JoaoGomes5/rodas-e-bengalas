@@ -1,3 +1,28 @@
+<?php
+require_once(dirname(__FILE__, 3) . "/src/api/request_api.php");
+
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+  $medicine_reference = $_POST['medicine_reference'];
+  $home_id = $_POST['home_id'];
+  $quantity = $_POST['quantity'];
+
+  $order = array(
+    "medicine_reference" => $medicine_reference,
+    "home_id" => $home_id,
+    "quantity" => $quantity
+  );
+
+  $order = json_encode($order);
+
+  $response = requestApi("POST", "http://localhost:3333/orders", $order);
+  $response = json_decode($response, true);
+
+  if ($response["error"] != null) header("location: index.php?err=1"); // Não há stock suficiente
+  
+  else header("location: index.php?succ=1"); // Encomenda efetuada
+  
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
