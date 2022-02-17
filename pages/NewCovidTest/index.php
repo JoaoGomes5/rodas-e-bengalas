@@ -3,11 +3,21 @@ require_once(dirname(__FILE__, 3) . "/src/api/request_api.php");
 require_once(dirname(__FILE__, 3) . "/src/modal/Modal.php");
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
-  $name = $_POST['name'];
-  $nif = $_POST['nif'];
-  $email = $_POST['email'];
-  $phone = $_POST['phone'];
-  $resultado = $_POST['resultado'];
+  $name = trim($_POST['name']);
+  $nif = trim($_POST['nif']);
+  $email = trim($_POST['email']);
+  $phone = trim($_POST['phone']);
+  $resultado = trim($_POST['resultado']);
+
+  if (strlen($nif) != 9) {
+    header("location: index.php?err=2"); // NIF deve ter apenas 9 dígitos
+    exit;
+  }
+
+  if (strlen($phone) != 9) {
+    header("location: index.php?err=3"); // Contacto deve ter apenas 9 dígitos
+    exit;
+  }
   
   switch ($resultado) {
     case "negativo":
@@ -105,6 +115,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
   if (isset($_GET["err"])) {
     if ($_GET["err"] == 1) {
       echo (create_error_modal("Selecione um restultado de teste"));
+    }
+    else if ($_GET["err"] == 2) {
+      echo (create_error_modal("NIF deve ter apenas 9 dígitos"));
+    }
+    else if ($_GET["err"] == 3) {
+      echo (create_error_modal("Contacto deve ter apenas 9 dígitos"));
     }
   }
   else if (isset($_GET["succ"])) {
